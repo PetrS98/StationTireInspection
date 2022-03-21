@@ -39,6 +39,8 @@ namespace StationTireInspection
             this.p0 = new System.Windows.Forms.Panel();
             this.p3 = new System.Windows.Forms.Panel();
             this.btnAboutApp = new System.Windows.Forms.Button();
+            this.btnStationSettings = new System.Windows.Forms.Button();
+            this.btnReaderSettings = new System.Windows.Forms.Button();
             this.p2 = new System.Windows.Forms.Panel();
             this.p1 = new System.Windows.Forms.Panel();
             this.pagePanel = new System.Windows.Forms.Panel();
@@ -48,8 +50,6 @@ namespace StationTireInspection
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbIcon = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnReaderSettings = new System.Windows.Forms.Button();
-            this.btnStationSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLanguage)).BeginInit();
             this.p0.SuspendLayout();
@@ -164,7 +164,7 @@ namespace StationTireInspection
             this.p0.Dock = System.Windows.Forms.DockStyle.Left;
             this.p0.Location = new System.Drawing.Point(0, 37);
             this.p0.Name = "p0";
-            this.p0.Size = new System.Drawing.Size(297, 664);
+            this.p0.Size = new System.Drawing.Size(297, 663);
             this.p0.TabIndex = 6;
             // 
             // p3
@@ -180,7 +180,7 @@ namespace StationTireInspection
             this.p3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.p3.Location = new System.Drawing.Point(0, 233);
             this.p3.Name = "p3";
-            this.p3.Size = new System.Drawing.Size(295, 429);
+            this.p3.Size = new System.Drawing.Size(295, 428);
             this.p3.TabIndex = 8;
             // 
             // btnAboutApp
@@ -200,6 +200,42 @@ namespace StationTireInspection
             this.btnAboutApp.Text = "About App";
             this.btnAboutApp.UseVisualStyleBackColor = false;
             this.btnAboutApp.Click += new System.EventHandler(this.btnAboutApp_Click);
+            // 
+            // btnStationSettings
+            // 
+            this.btnStationSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnStationSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStationSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnStationSettings.FlatAppearance.BorderSize = 0;
+            this.btnStationSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
+            this.btnStationSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStationSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnStationSettings.ForeColor = System.Drawing.Color.White;
+            this.btnStationSettings.Location = new System.Drawing.Point(0, 305);
+            this.btnStationSettings.Name = "btnStationSettings";
+            this.btnStationSettings.Size = new System.Drawing.Size(295, 61);
+            this.btnStationSettings.TabIndex = 8;
+            this.btnStationSettings.Text = "Station Settings";
+            this.btnStationSettings.UseVisualStyleBackColor = false;
+            this.btnStationSettings.Click += new System.EventHandler(this.btnStationSettings_Click);
+            // 
+            // btnReaderSettings
+            // 
+            this.btnReaderSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnReaderSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReaderSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnReaderSettings.FlatAppearance.BorderSize = 0;
+            this.btnReaderSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
+            this.btnReaderSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReaderSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReaderSettings.ForeColor = System.Drawing.Color.White;
+            this.btnReaderSettings.Location = new System.Drawing.Point(0, 244);
+            this.btnReaderSettings.Name = "btnReaderSettings";
+            this.btnReaderSettings.Size = new System.Drawing.Size(295, 61);
+            this.btnReaderSettings.TabIndex = 7;
+            this.btnReaderSettings.Text = "Barcode Reader Settings";
+            this.btnReaderSettings.UseVisualStyleBackColor = false;
+            this.btnReaderSettings.Click += new System.EventHandler(this.btnReaderSettings_Click);
             // 
             // p2
             // 
@@ -228,7 +264,7 @@ namespace StationTireInspection
             this.pagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pagePanel.Location = new System.Drawing.Point(297, 37);
             this.pagePanel.Name = "pagePanel";
-            this.pagePanel.Size = new System.Drawing.Size(439, 664);
+            this.pagePanel.Size = new System.Drawing.Size(439, 663);
             this.pagePanel.TabIndex = 7;
             // 
             // pMain
@@ -310,46 +346,12 @@ namespace StationTireInspection
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnReaderSettings
-            // 
-            this.btnReaderSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnReaderSettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReaderSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnReaderSettings.FlatAppearance.BorderSize = 0;
-            this.btnReaderSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
-            this.btnReaderSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReaderSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReaderSettings.ForeColor = System.Drawing.Color.White;
-            this.btnReaderSettings.Location = new System.Drawing.Point(0, 244);
-            this.btnReaderSettings.Name = "btnReaderSettings";
-            this.btnReaderSettings.Size = new System.Drawing.Size(295, 61);
-            this.btnReaderSettings.TabIndex = 7;
-            this.btnReaderSettings.Text = "Barcode Reader Settings";
-            this.btnReaderSettings.UseVisualStyleBackColor = false;
-            // 
-            // btnStationSettings
-            // 
-            this.btnStationSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnStationSettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnStationSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnStationSettings.FlatAppearance.BorderSize = 0;
-            this.btnStationSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
-            this.btnStationSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStationSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStationSettings.ForeColor = System.Drawing.Color.White;
-            this.btnStationSettings.Location = new System.Drawing.Point(0, 305);
-            this.btnStationSettings.Name = "btnStationSettings";
-            this.btnStationSettings.Size = new System.Drawing.Size(295, 61);
-            this.btnStationSettings.TabIndex = 8;
-            this.btnStationSettings.Text = "Station Settings";
-            this.btnStationSettings.UseVisualStyleBackColor = false;
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(736, 701);
+            this.ClientSize = new System.Drawing.Size(736, 700);
             this.Controls.Add(this.pagePanel);
             this.Controls.Add(this.p0);
             this.Controls.Add(this.pMain);

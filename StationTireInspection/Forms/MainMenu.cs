@@ -17,7 +17,9 @@ namespace StationTireInspection
         private ChangePassword changePassword;
         private Diagnostics diagnostics;
         private DatabaseSettings databaseSettings;
-        private AboutApp aboutApp; 
+        private AboutApp aboutApp;
+        private BarcodeReaderSettings barcodeReaderSettings;
+        private StationSettings stationSettings;
 
         private bool mouseDown;
         private Point lastLocation;
@@ -67,6 +69,8 @@ namespace StationTireInspection
             diagnostics = new Diagnostics();
             databaseSettings = new DatabaseSettings();
             aboutApp = new AboutApp();
+            barcodeReaderSettings = new BarcodeReaderSettings();
+            stationSettings = new StationSettings();
 
             //connectToDatabase.clientStatusDot1.Client = mySQLDatabase;
 
@@ -89,6 +93,14 @@ namespace StationTireInspection
             aboutApp.TopLevel = false;
             aboutApp.Dock = DockStyle.Fill;
             pagePanel.Controls.Add(aboutApp);
+
+            stationSettings.TopLevel = false;
+            stationSettings.Dock = DockStyle.Fill;
+            pagePanel.Controls.Add(stationSettings);
+
+            barcodeReaderSettings.TopLevel = false;
+            barcodeReaderSettings.Dock = DockStyle.Fill;
+            pagePanel.Controls.Add(barcodeReaderSettings);
 
 
             Translator.Language = Language.ENG;
@@ -190,6 +202,18 @@ namespace StationTireInspection
         private void lblTitle_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void btnReaderSettings_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            ActivePage = barcodeReaderSettings;
+        }
+
+        private void btnStationSettings_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            ActivePage = stationSettings;
         }
     }
 }
