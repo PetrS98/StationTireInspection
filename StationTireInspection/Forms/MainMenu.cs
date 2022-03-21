@@ -179,6 +179,18 @@ namespace StationTireInspection
             ActivePage = aboutApp;
         }
 
+        private void btnReaderSettings_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            ActivePage = barcodeReaderSettings;
+        }
+
+        private void btnStationSettings_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            ActivePage = stationSettings;
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -202,18 +214,6 @@ namespace StationTireInspection
         private void lblTitle_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-        }
-
-        private void btnReaderSettings_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = barcodeReaderSettings;
-        }
-
-        private void btnStationSettings_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = stationSettings;
         }
     }
 }
