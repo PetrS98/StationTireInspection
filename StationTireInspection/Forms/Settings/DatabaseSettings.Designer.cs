@@ -194,9 +194,10 @@ namespace StationTireInspection.Forms
             this.ipAddressBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ipAddressBox.IPAddress = "";
             this.ipAddressBox.IPAddressAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ipAddressBox.Location = new System.Drawing.Point(3, 69);
+            this.ipAddressBox.Location = new System.Drawing.Point(4, 70);
+            this.ipAddressBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ipAddressBox.Name = "ipAddressBox";
-            this.ipAddressBox.Size = new System.Drawing.Size(280, 23);
+            this.ipAddressBox.Size = new System.Drawing.Size(278, 21);
             this.ipAddressBox.TabIndex = 2;
             this.ipAddressBox.TextBoxBackColor = System.Drawing.SystemColors.Window;
             // 
@@ -222,6 +223,7 @@ namespace StationTireInspection.Forms
             this.tbDatabaseName.Name = "tbDatabaseName";
             this.tbDatabaseName.Size = new System.Drawing.Size(280, 29);
             this.tbDatabaseName.TabIndex = 4;
+            this.tbDatabaseName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblTableName
             // 
@@ -245,6 +247,7 @@ namespace StationTireInspection.Forms
             this.tbTableName.Name = "tbTableName";
             this.tbTableName.Size = new System.Drawing.Size(280, 29);
             this.tbTableName.TabIndex = 6;
+            this.tbTableName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblDatabaseUserName
             // 
@@ -268,6 +271,7 @@ namespace StationTireInspection.Forms
             this.tbDatabaseUserName.Name = "tbDatabaseUserName";
             this.tbDatabaseUserName.Size = new System.Drawing.Size(280, 29);
             this.tbDatabaseUserName.TabIndex = 8;
+            this.tbDatabaseUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblDatabasePassword
             // 
@@ -291,6 +295,7 @@ namespace StationTireInspection.Forms
             this.tbDatabasePassword.Name = "tbDatabasePassword";
             this.tbDatabasePassword.Size = new System.Drawing.Size(280, 29);
             this.tbDatabasePassword.TabIndex = 10;
+            this.tbDatabasePassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnApply
             // 

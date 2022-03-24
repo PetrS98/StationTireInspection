@@ -113,23 +113,27 @@ namespace StationTireInspection
         {
             if (Translator.Language == Language.CZ)
             {
-                Text =                          "NMP Station Tire Inspection";
-                lblTitle.Text =                 "NMP Station Tire Inspection";
-                btnLogin.Text =     "Přihlášení do VII";
-                btnChangePassword.Text =               "Změna Hesla";
-                btnDiagnostics.Text =              "Diagnostika";
-                btnDatabaseSettings.Text =            "Nastavení";
-                btnAboutApp.Text =              "O Aplikaci";
+                Text = "NMP Station Tire Inspection";
+                lblTitle.Text = "NMP Station Tire Inspection";
+                btnLogin.Text = "Přihlášení do VII";
+                btnChangePassword.Text = "Změna Hesla";
+                btnDiagnostics.Text = "Diagnostika";
+                btnDatabaseSettings.Text = "Nastavení Databáze";
+                btnReaderSettings.Text = "Nastavení Čtečky Barkódů";
+                btnStationSettings.Text = "Nastavení Stanice";
+                btnAboutApp.Text = "O Aplikaci";
             }
             else if (Translator.Language == Language.ENG)
             {
-                Text =                          "NMP Station Tire Inspection";
-                lblTitle.Text =                 "NMP Station Tire Inspection";
-                btnLogin.Text =     "Login to VII";
-                btnChangePassword.Text =               "Change Password";
-                btnDiagnostics.Text =              "Diagnostics";
-                btnDatabaseSettings.Text =            "Settings";
-                btnAboutApp.Text =              "About App";
+                Text = "NMP Station Tire Inspection";
+                lblTitle.Text = "NMP Station Tire Inspection";
+                btnLogin.Text = "Login to VII";
+                btnChangePassword.Text = "Change Password";
+                btnDiagnostics.Text = "Diagnostics";
+                btnDatabaseSettings.Text = "Database Settings";
+                btnReaderSettings.Text = "Barcode Reader Settings";
+                btnStationSettings.Text = "Station Settings";
+                btnAboutApp.Text = "About App";
             }
         }
 

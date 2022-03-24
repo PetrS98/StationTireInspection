@@ -32,16 +32,16 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDatabaseStatus = new System.Windows.Forms.Label();
             this.clientStatusDot1 = new StationTireInspection.UserControls.ClientStatusDot();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblReaderStatus = new System.Windows.Forms.Label();
             this.clientStatusDot2 = new StationTireInspection.UserControls.ClientStatusDot();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.tbBuffer = new System.Windows.Forms.TextBox();
+            this.lblBarcodeBuffer = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -80,7 +80,7 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblDatabaseStatus, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.clientStatusDot1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 42);
@@ -90,20 +90,20 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel1.Size = new System.Drawing.Size(286, 42);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // label1
+            // lblDatabaseStatus
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblDatabaseStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 42);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Database Status:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDatabaseStatus.AutoSize = true;
+            this.lblDatabaseStatus.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDatabaseStatus.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblDatabaseStatus.Location = new System.Drawing.Point(3, 0);
+            this.lblDatabaseStatus.Name = "lblDatabaseStatus";
+            this.lblDatabaseStatus.Size = new System.Drawing.Size(195, 42);
+            this.lblDatabaseStatus.TabIndex = 0;
+            this.lblDatabaseStatus.Text = "Database Status:";
+            this.lblDatabaseStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // clientStatusDot1
             // 
@@ -122,7 +122,7 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lblReaderStatus, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.clientStatusDot2, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
@@ -132,20 +132,20 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel3.Size = new System.Drawing.Size(286, 42);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
-            // label2
+            // lblReaderStatus
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblReaderStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(195, 42);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Reader Status:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblReaderStatus.AutoSize = true;
+            this.lblReaderStatus.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblReaderStatus.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblReaderStatus.Location = new System.Drawing.Point(3, 0);
+            this.lblReaderStatus.Name = "lblReaderStatus";
+            this.lblReaderStatus.Size = new System.Drawing.Size(195, 42);
+            this.lblReaderStatus.TabIndex = 0;
+            this.lblReaderStatus.Text = "Reader Status:";
+            this.lblReaderStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // clientStatusDot2
             // 
@@ -167,8 +167,8 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 122);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.320988F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95.67902F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.218115F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 97.78188F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(439, 541);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
@@ -178,11 +178,11 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 292F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.button1, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.textBox1, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label3, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnClear, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.tbBuffer, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lblBarcodeBuffer, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 26);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 15);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
@@ -191,46 +191,48 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel5.Size = new System.Drawing.Size(433, 512);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
-            // button1
+            // btnClear
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(262, 476);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 33);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnClear.FlatAppearance.BorderSize = 0;
+            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(262, 476);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(97, 33);
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // tbBuffer
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(73, 42);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(286, 428);
-            this.textBox1.TabIndex = 0;
+            this.tbBuffer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbBuffer.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tbBuffer.Location = new System.Drawing.Point(73, 42);
+            this.tbBuffer.Multiline = true;
+            this.tbBuffer.Name = "tbBuffer";
+            this.tbBuffer.Size = new System.Drawing.Size(286, 428);
+            this.tbBuffer.TabIndex = 0;
+            this.tbBuffer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label3
+            // lblBarcodeBuffer
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblBarcodeBuffer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(73, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(286, 39);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Barcode Buffer";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBarcodeBuffer.AutoSize = true;
+            this.lblBarcodeBuffer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblBarcodeBuffer.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblBarcodeBuffer.Location = new System.Drawing.Point(73, 0);
+            this.lblBarcodeBuffer.Name = "lblBarcodeBuffer";
+            this.lblBarcodeBuffer.Size = new System.Drawing.Size(286, 39);
+            this.lblBarcodeBuffer.TabIndex = 1;
+            this.lblBarcodeBuffer.Text = "Barcode Buffer";
+            this.lblBarcodeBuffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Diagnostics
             // 
@@ -260,16 +262,16 @@ namespace StationTireInspection.Forms
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDatabaseStatus;
         private UserControls.ClientStatusDot clientStatusDot1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblReaderStatus;
         private UserControls.ClientStatusDot clientStatusDot2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblBarcodeBuffer;
+        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbBuffer;
     }
 }

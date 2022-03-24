@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <Reference Include="VisualInspection.Utils">
-      <HintPath>..\..\..\..\..\Desktop\User Administration (For VI NMP App)\User Administration (For VI NMP App)\bin\Debug\netcoreapp3.1\VisualInspection.Utils.dll</HintPath>
+      <HintPath>..\..\User Administration (For VI NMP App)\User Administration (For VI NMP App)\bin\Debug\netcoreapp3.1\VisualInspection.Utils.dll</HintPath>
     </Reference>
   </ItemGroup>
 

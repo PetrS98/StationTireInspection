@@ -299,7 +299,7 @@ namespace StationTireInspection
             this.lblTitle.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.lblTitle.Size = new System.Drawing.Size(656, 35);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "User Database Administration";
+            this.lblTitle.Text = "Station Tire Inspection";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseDown);
             this.lblTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseMove);

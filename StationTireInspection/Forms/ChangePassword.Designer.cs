@@ -31,13 +31,13 @@ namespace StationTireInspection.Forms
         {
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblNewPassword = new System.Windows.Forms.Label();
+            this.tbNewPassword = new System.Windows.Forms.TextBox();
+            this.lblConfirmNewPassword = new System.Windows.Forms.Label();
+            this.tbConfirmNewPassword = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnChangePassword = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancle = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -63,10 +63,10 @@ namespace StationTireInspection.Forms
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.lblUserName, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblPassword, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblNewPassword, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tbNewPassword, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblConfirmNewPassword, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tbConfirmNewPassword, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 6);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(76, 23);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -82,59 +82,59 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel1.Size = new System.Drawing.Size(286, 436);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // lblUserName
+            // lblNewPassword
             // 
-            this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUserName.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblUserName.Location = new System.Drawing.Point(3, 8);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(138, 25);
-            this.lblUserName.TabIndex = 0;
-            this.lblUserName.Text = "New Password:";
+            this.lblNewPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblNewPassword.AutoSize = true;
+            this.lblNewPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNewPassword.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblNewPassword.Location = new System.Drawing.Point(3, 8);
+            this.lblNewPassword.Name = "lblNewPassword";
+            this.lblNewPassword.Size = new System.Drawing.Size(138, 25);
+            this.lblNewPassword.TabIndex = 0;
+            this.lblNewPassword.Text = "New Password:";
             // 
-            // textBox1
+            // tbNewPassword
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbNewPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(3, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(280, 29);
-            this.textBox1.TabIndex = 1;
+            this.tbNewPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbNewPassword.Location = new System.Drawing.Point(3, 36);
+            this.tbNewPassword.Name = "tbNewPassword";
+            this.tbNewPassword.Size = new System.Drawing.Size(280, 29);
+            this.tbNewPassword.TabIndex = 1;
             // 
-            // lblPassword
+            // lblConfirmNewPassword
             // 
-            this.lblPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPassword.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblPassword.Location = new System.Drawing.Point(3, 89);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(211, 25);
-            this.lblPassword.TabIndex = 2;
-            this.lblPassword.Text = "Confirm New Password:";
+            this.lblConfirmNewPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblConfirmNewPassword.AutoSize = true;
+            this.lblConfirmNewPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblConfirmNewPassword.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblConfirmNewPassword.Location = new System.Drawing.Point(3, 89);
+            this.lblConfirmNewPassword.Name = "lblConfirmNewPassword";
+            this.lblConfirmNewPassword.Size = new System.Drawing.Size(211, 25);
+            this.lblConfirmNewPassword.TabIndex = 2;
+            this.lblConfirmNewPassword.Text = "Confirm New Password:";
             // 
-            // textBox2
+            // tbConfirmNewPassword
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbConfirmNewPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(3, 117);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(280, 29);
-            this.textBox2.TabIndex = 3;
+            this.tbConfirmNewPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbConfirmNewPassword.Location = new System.Drawing.Point(3, 117);
+            this.tbConfirmNewPassword.Name = "tbConfirmNewPassword";
+            this.tbConfirmNewPassword.PasswordChar = '*';
+            this.tbConfirmNewPassword.Size = new System.Drawing.Size(280, 29);
+            this.tbConfirmNewPassword.TabIndex = 3;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.btnChangePassword);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnCancle);
             this.panel1.Location = new System.Drawing.Point(3, 175);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(280, 43);
@@ -156,23 +156,25 @@ namespace StationTireInspection.Forms
             this.btnChangePassword.TabIndex = 3;
             this.btnChangePassword.Text = "Change";
             this.btnChangePassword.UseVisualStyleBackColor = false;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
-            // button1
+            // btnCancle
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(166, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 43);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCancle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancle.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCancle.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancle.FlatAppearance.BorderSize = 0;
+            this.btnCancle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
+            this.btnCancle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCancle.ForeColor = System.Drawing.Color.White;
+            this.btnCancle.Location = new System.Drawing.Point(166, 0);
+            this.btnCancle.Name = "btnCancle";
+            this.btnCancle.Size = new System.Drawing.Size(114, 43);
+            this.btnCancle.TabIndex = 4;
+            this.btnCancle.Text = "Cancel";
+            this.btnCancle.UseVisualStyleBackColor = false;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
             // ChangePassword
             // 
@@ -197,12 +199,12 @@ namespace StationTireInspection.Forms
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lblUserName;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lblNewPassword;
+        private System.Windows.Forms.TextBox tbNewPassword;
+        private System.Windows.Forms.Label lblConfirmNewPassword;
+        private System.Windows.Forms.TextBox tbConfirmNewPassword;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnChangePassword;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancle;
     }
 }

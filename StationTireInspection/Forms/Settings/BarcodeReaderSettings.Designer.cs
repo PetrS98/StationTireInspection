@@ -217,6 +217,7 @@ namespace StationTireInspection.Forms
             this.tbPort.Name = "tbPort";
             this.tbPort.Size = new System.Drawing.Size(280, 29);
             this.tbPort.TabIndex = 4;
+            this.tbPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BarcodeReaderSettings
             // 
