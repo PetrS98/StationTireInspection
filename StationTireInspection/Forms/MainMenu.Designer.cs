@@ -40,6 +40,7 @@ namespace StationTireInspection
             this.p3 = new System.Windows.Forms.Panel();
             this.btnAboutApp = new System.Windows.Forms.Button();
             this.btnStationSettings = new System.Windows.Forms.Button();
+            this.btnMainAppSettings = new System.Windows.Forms.Button();
             this.btnReaderSettings = new System.Windows.Forms.Button();
             this.p2 = new System.Windows.Forms.Panel();
             this.p1 = new System.Windows.Forms.Panel();
@@ -50,6 +51,7 @@ namespace StationTireInspection
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbIcon = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.pbLoged = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLanguage)).BeginInit();
             this.p0.SuspendLayout();
@@ -60,6 +62,7 @@ namespace StationTireInspection
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoged)).BeginInit();
             this.SuspendLayout();
             // 
             // pbLogo
@@ -129,7 +132,7 @@ namespace StationTireInspection
             // pbLanguage
             // 
             this.pbLanguage.Image = global::StationTireInspection.Properties.Resources.cz;
-            this.pbLanguage.Location = new System.Drawing.Point(97, 17);
+            this.pbLanguage.Location = new System.Drawing.Point(33, 17);
             this.pbLanguage.Name = "pbLanguage";
             this.pbLanguage.Size = new System.Drawing.Size(100, 50);
             this.pbLanguage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -164,7 +167,7 @@ namespace StationTireInspection
             this.p0.Dock = System.Windows.Forms.DockStyle.Left;
             this.p0.Location = new System.Drawing.Point(0, 37);
             this.p0.Name = "p0";
-            this.p0.Size = new System.Drawing.Size(297, 663);
+            this.p0.Size = new System.Drawing.Size(297, 723);
             this.p0.TabIndex = 6;
             // 
             // p3
@@ -172,6 +175,7 @@ namespace StationTireInspection
             this.p3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.p3.Controls.Add(this.btnAboutApp);
             this.p3.Controls.Add(this.btnStationSettings);
+            this.p3.Controls.Add(this.btnMainAppSettings);
             this.p3.Controls.Add(this.btnReaderSettings);
             this.p3.Controls.Add(this.btnDatabaseSettings);
             this.p3.Controls.Add(this.btnDiagnostics);
@@ -180,7 +184,7 @@ namespace StationTireInspection
             this.p3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.p3.Location = new System.Drawing.Point(0, 233);
             this.p3.Name = "p3";
-            this.p3.Size = new System.Drawing.Size(295, 428);
+            this.p3.Size = new System.Drawing.Size(295, 488);
             this.p3.TabIndex = 8;
             // 
             // btnAboutApp
@@ -193,7 +197,7 @@ namespace StationTireInspection
             this.btnAboutApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAboutApp.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAboutApp.ForeColor = System.Drawing.Color.White;
-            this.btnAboutApp.Location = new System.Drawing.Point(0, 366);
+            this.btnAboutApp.Location = new System.Drawing.Point(0, 427);
             this.btnAboutApp.Name = "btnAboutApp";
             this.btnAboutApp.Size = new System.Drawing.Size(295, 61);
             this.btnAboutApp.TabIndex = 6;
@@ -211,13 +215,31 @@ namespace StationTireInspection
             this.btnStationSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStationSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnStationSettings.ForeColor = System.Drawing.Color.White;
-            this.btnStationSettings.Location = new System.Drawing.Point(0, 305);
+            this.btnStationSettings.Location = new System.Drawing.Point(0, 366);
             this.btnStationSettings.Name = "btnStationSettings";
             this.btnStationSettings.Size = new System.Drawing.Size(295, 61);
             this.btnStationSettings.TabIndex = 8;
             this.btnStationSettings.Text = "Station Settings";
             this.btnStationSettings.UseVisualStyleBackColor = false;
             this.btnStationSettings.Click += new System.EventHandler(this.btnStationSettings_Click);
+            // 
+            // btnMainAppSettings
+            // 
+            this.btnMainAppSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMainAppSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMainAppSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMainAppSettings.FlatAppearance.BorderSize = 0;
+            this.btnMainAppSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
+            this.btnMainAppSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMainAppSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMainAppSettings.ForeColor = System.Drawing.Color.White;
+            this.btnMainAppSettings.Location = new System.Drawing.Point(0, 305);
+            this.btnMainAppSettings.Name = "btnMainAppSettings";
+            this.btnMainAppSettings.Size = new System.Drawing.Size(295, 61);
+            this.btnMainAppSettings.TabIndex = 10;
+            this.btnMainAppSettings.Text = "Main App Settings";
+            this.btnMainAppSettings.UseVisualStyleBackColor = false;
+            this.btnMainAppSettings.Click += new System.EventHandler(this.btnMainAppSettings_Click);
             // 
             // btnReaderSettings
             // 
@@ -240,6 +262,7 @@ namespace StationTireInspection
             // p2
             // 
             this.p2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.p2.Controls.Add(this.pbLoged);
             this.p2.Controls.Add(this.pbLanguage);
             this.p2.Dock = System.Windows.Forms.DockStyle.Top;
             this.p2.Location = new System.Drawing.Point(0, 151);
@@ -264,7 +287,7 @@ namespace StationTireInspection
             this.pagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pagePanel.Location = new System.Drawing.Point(297, 37);
             this.pagePanel.Name = "pagePanel";
-            this.pagePanel.Size = new System.Drawing.Size(439, 663);
+            this.pagePanel.Size = new System.Drawing.Size(439, 723);
             this.pagePanel.TabIndex = 7;
             // 
             // pMain
@@ -346,12 +369,23 @@ namespace StationTireInspection
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // pbLoged
+            // 
+            this.pbLoged.Image = global::StationTireInspection.Properties.Resources.login;
+            this.pbLoged.Location = new System.Drawing.Point(162, 22);
+            this.pbLoged.Name = "pbLoged";
+            this.pbLoged.Size = new System.Drawing.Size(99, 40);
+            this.pbLoged.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLoged.TabIndex = 5;
+            this.pbLoged.TabStop = false;
+            this.pbLoged.Click += new System.EventHandler(this.pbLoged_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(736, 700);
+            this.ClientSize = new System.Drawing.Size(736, 760);
             this.Controls.Add(this.pagePanel);
             this.Controls.Add(this.p0);
             this.Controls.Add(this.pMain);
@@ -361,6 +395,7 @@ namespace StationTireInspection
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Database Administration";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLanguage)).EndInit();
             this.p0.ResumeLayout(false);
@@ -371,6 +406,7 @@ namespace StationTireInspection
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoged)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -397,6 +433,8 @@ namespace StationTireInspection
         private System.Windows.Forms.Button btnAboutApp;
         private System.Windows.Forms.Button btnStationSettings;
         private System.Windows.Forms.Button btnReaderSettings;
+        private System.Windows.Forms.Button btnMainAppSettings;
+        private System.Windows.Forms.PictureBox pbLoged;
     }
 }
 

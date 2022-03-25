@@ -9,9 +9,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace StationTireInspection.Forms
+namespace StationTireInspection.Forms.Settings
 {
-    public partial class BarcodeReaderSettings : Form
+    public partial class MainAppConnectionSettings : Form
     {
         private SettingsJDO Settings;
 
@@ -21,7 +21,7 @@ namespace StationTireInspection.Forms
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public BarcodeReaderSettings(SettingsJDO settings)
+        public MainAppConnectionSettings(SettingsJDO settings)
         {
             InitializeComponent();
 
@@ -36,7 +36,7 @@ namespace StationTireInspection.Forms
         {
             if (Translator.Language == Language.CZ)
             {
-                lblTitle.Text = "Nastavení Čtečky Barkódů";
+                lblTitle.Text = "Nastavení Hlavní Aplikace";
                 lblIPAddress.Text = "IP Adresa:";
                 lblPort.Text = "Port:";
                 btnConnect.Text = "Připojit";
@@ -54,7 +54,7 @@ namespace StationTireInspection.Forms
             }
             else if (Translator.Language == Language.ENG)
             {
-                lblTitle.Text = "Database Settings";
+                lblTitle.Text = "Main App Settings";
                 lblIPAddress.Text = "IP Address:";
                 lblPort.Text = "Port:";
                 btnConnect.Text = "Connect";
@@ -76,7 +76,7 @@ namespace StationTireInspection.Forms
         {
             if (ipAddressBox.IPAddressValid)
             {
-                Settings.BarcodeReaderSettings.IPAddress = ipAddressBox.IPAddress;
+                Settings.MainAppConnectionSettings.IPAddress = ipAddressBox.IPAddress;
             }
             else
             {
@@ -86,7 +86,7 @@ namespace StationTireInspection.Forms
 
             if (TextBoxHelper.TbInputIsNumber(tbPort))
             {
-                Settings.BarcodeReaderSettings.Port = int.Parse(tbPort.Text);
+                Settings.MainAppConnectionSettings.Port = int.Parse(tbPort.Text);
             }
             else
             {
@@ -109,8 +109,8 @@ namespace StationTireInspection.Forms
 
         private void SetInitValue()
         {
-            ipAddressBox.IPAddress = Settings.BarcodeReaderSettings.IPAddress;
-            tbPort.Text = Settings.BarcodeReaderSettings.Port.ToString();
+            ipAddressBox.IPAddress = Settings.MainAppConnectionSettings.IPAddress;
+            tbPort.Text = Settings.MainAppConnectionSettings.Port.ToString();
         }
     }
 }

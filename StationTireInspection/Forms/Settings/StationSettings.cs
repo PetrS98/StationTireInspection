@@ -1,5 +1,6 @@
 ﻿using StationTireInspection.Classes;
 using StationTireInspection.Forms.MessageBoxes;
+using StationTireInspection.UDT;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ namespace StationTireInspection.Forms
 {
     public partial class StationSettings : Form
     {
-        public string StationName { get; set; }
+        private SettingsJDO Settings;
 
         private string ErrorMessageBoxTitle = "";
         private string Error = "";
@@ -20,9 +21,14 @@ namespace StationTireInspection.Forms
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public StationSettings()
+        public StationSettings(SettingsJDO settings)
         {
             InitializeComponent();
+
+            Settings = settings;
+
+            SetInitValue();
+
             Translator.LanguageChanged += Translate;
         }
 
@@ -63,7 +69,7 @@ namespace StationTireInspection.Forms
         {
             if(tbName.Text != null && tbName.Text != "")
             {
-                StationName = tbName.Text;
+                Settings.StationSettings.StationName = tbName.Text;
             }
             else
             {
@@ -72,6 +78,11 @@ namespace StationTireInspection.Forms
             }
 
             CustomMessageBox.ShowPopup(MessageMessageBoxTitle, Message);
+        }
+
+        private void SetInitValue()
+        {
+            tbName.Text = Settings.StationSettings.StationName;
         }
     }
 }

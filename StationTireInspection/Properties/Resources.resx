@@ -121,14 +121,17 @@
   <data name="cz" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cz.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gb.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_2760214" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2760214.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GreenDot_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GreenDot_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_1991986" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1991986.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NexenLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NexenLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gb.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RedDot_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RedDot_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,10 +139,13 @@
   <data name="WhiteDot_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhiteDot_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_1991986" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1991986.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GreenDot_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GreenDot_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_2760214" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2760214.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

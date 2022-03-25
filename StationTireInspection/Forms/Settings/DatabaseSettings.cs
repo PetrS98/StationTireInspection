@@ -1,5 +1,6 @@
 ﻿using StationTireInspection.Classes;
 using StationTireInspection.Forms.MessageBoxes;
+using StationTireInspection.UDT;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,11 +13,7 @@ namespace StationTireInspection.Forms
 {
     public partial class DatabaseSettings : Form
     {
-        public string IPAddress { get; set; }
-        public string DatabaseName { get; set; }
-        public string TableName { get; set; }
-        public string DatabaseUserName { get; set; }
-        public string DatabasePassword { get; set; }
+        private SettingsJDO Settings;
 
         private string ErrorMessageBoxTitle = "";
         private string[] Errors = new string[5];
@@ -24,9 +21,14 @@ namespace StationTireInspection.Forms
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public DatabaseSettings()
+        public DatabaseSettings(SettingsJDO settings)
         {
             InitializeComponent();
+
+            Settings = settings;
+
+            SetInitValue();
+
             Translator.LanguageChanged += Translate;
         }
 
@@ -37,9 +39,9 @@ namespace StationTireInspection.Forms
                 lblTitle.Text = "Nastavení Databáze";
                 lblIPAddress.Text = "IP Adresa:";
                 lblDatabaseName.Text = "Jméno Databáze:";
-                lblTableName.Text = "Jméno Tabulky";
+                lblTableName.Text = "Jméno Tabulky:";
                 lblDatabaseUserName.Text = "Uživatelské Jméno k Databázi:";
-                lblDatabasePassword.Text = "Heslo k Databázi";
+                lblDatabasePassword.Text = "Heslo k Databázi:";
                 btnConnect.Text = "Připojit";
                 btnDisconnect.Text = "Odpojit";
                 btnApply.Text = "Použít";
@@ -86,7 +88,7 @@ namespace StationTireInspection.Forms
         {
             if (ipAddressBox.IPAddressValid)
             {
-                IPAddress = ipAddressBox.IPAddress;
+                Settings.DatabaseSettings.IPAddress = ipAddressBox.IPAddress;
             }
             else
             {
@@ -96,7 +98,7 @@ namespace StationTireInspection.Forms
 
             if (TextBoxHelper.TbInputIsText(tbDatabaseName))
             {
-                DatabaseName = tbDatabaseName.Text;
+                Settings.DatabaseSettings.DatabaseName = tbDatabaseName.Text;
             }
             else
             {
@@ -106,7 +108,7 @@ namespace StationTireInspection.Forms
 
             if (TextBoxHelper.TbInputIsText(tbTableName))
             {
-                TableName = lblTableName.Text;
+                Settings.DatabaseSettings.TableName = tbTableName.Text;
             }
             else
             {
@@ -116,7 +118,7 @@ namespace StationTireInspection.Forms
 
             if (TextBoxHelper.TbInputIsText(tbDatabaseUserName))
             {
-                DatabaseName = tbDatabaseUserName.Text;
+                Settings.DatabaseSettings.DatabaseUserName = tbDatabaseUserName.Text;
             }
             else
             {
@@ -126,7 +128,7 @@ namespace StationTireInspection.Forms
 
             if (tbDatabasePassword.Text != null && tbDatabasePassword.Text != "")
             {
-                DatabasePassword = tbDatabasePassword.Text;
+                Settings.DatabaseSettings.DatabasePassword = tbDatabasePassword.Text;
             }
             else
             {
@@ -145,6 +147,15 @@ namespace StationTireInspection.Forms
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetInitValue()
+        {
+            ipAddressBox.IPAddress = Settings.DatabaseSettings.IPAddress;
+            tbDatabaseName.Text = Settings.DatabaseSettings.DatabaseName;
+            tbTableName.Text = Settings.DatabaseSettings.TableName;
+            tbDatabaseUserName.Text = Settings.DatabaseSettings.DatabaseUserName;
+            tbDatabasePassword.Text = "";
         }
     }
 }

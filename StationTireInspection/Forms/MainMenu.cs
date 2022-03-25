@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using StationTireInspection.Classes;
 using StationTireInspection.Forms;
+using StationTireInspection.Forms.Settings;
+using StationTireInspection.UDT;
 
 namespace StationTireInspection
 {
@@ -10,6 +13,8 @@ namespace StationTireInspection
     {
         private readonly Color SELECTED_BUTTON_COLOR = Color.FromArgb(128, 0, 128);
         private readonly Color DEFAULT_BUTTON_COLOR = Color.FromArgb(64,64,64);
+
+        private SettingsJDO Settings { get; set; } = new SettingsJDO();
 
         private MySQLDatabase mySQLDatabase = new MySQLDatabase();
 
@@ -20,6 +25,7 @@ namespace StationTireInspection
         private AboutApp aboutApp;
         private BarcodeReaderSettings barcodeReaderSettings;
         private StationSettings stationSettings;
+        private MainAppConnectionSettings mainAppConnectionSettings;
 
         private bool mouseDown;
         private Point lastLocation;
@@ -62,15 +68,32 @@ namespace StationTireInspection
         {
             InitializeComponent();
 
+            
+
+            if (File.Exists("settings.json"))
+            {
+                EncriptionManager.DecryptFile("settings.json", "W]rs6^%]");
+                Settings = SettingsJDO.Deserialize(File.ReadAllText("settings.json"));
+            }
+            else
+            {
+                File.WriteAllText("settings.json", Settings.Serialize());
+            }
+
+            EncriptionManager.EncryptFile("settings.json", "W]rs6^%]");
+
+            //SettingsData = SettingsJDO.Deserialize()
+
             Translator.LanguageChanged += Translate;
 
             login = new Login();
             changePassword = new ChangePassword();
             diagnostics = new Diagnostics();
-            databaseSettings = new DatabaseSettings();
+            databaseSettings = new DatabaseSettings(Settings);
             aboutApp = new AboutApp();
-            barcodeReaderSettings = new BarcodeReaderSettings();
-            stationSettings = new StationSettings();
+            barcodeReaderSettings = new BarcodeReaderSettings(Settings);
+            stationSettings = new StationSettings(Settings);
+            mainAppConnectionSettings = new MainAppConnectionSettings(Settings);
 
             //connectToDatabase.clientStatusDot1.Client = mySQLDatabase;
 
@@ -102,8 +125,13 @@ namespace StationTireInspection
             barcodeReaderSettings.Dock = DockStyle.Fill;
             pagePanel.Controls.Add(barcodeReaderSettings);
 
+            mainAppConnectionSettings.TopLevel = false;
+            mainAppConnectionSettings.Dock = DockStyle.Fill;
+            pagePanel.Controls.Add(mainAppConnectionSettings);
+
 
             Translator.Language = Language.ENG;
+            LoginManager.LogedIn = true;
 
             ActiveButton = btnAboutApp;
             ActivePage = aboutApp;
@@ -134,6 +162,22 @@ namespace StationTireInspection
                 btnReaderSettings.Text = "Barcode Reader Settings";
                 btnStationSettings.Text = "Station Settings";
                 btnAboutApp.Text = "About App";
+            }
+        }
+
+        private void pbLoged_Click(object sender, EventArgs e)
+        {
+            if (LoginManager.LogedIn == true)
+            {
+                pbLoged.Image.Dispose();
+                pbLoged.Image = Properties.Resources.logout;
+                LoginManager.LogedIn = false;
+            }
+            else
+            {
+                pbLoged.Image.Dispose();
+                pbLoged.Image = Properties.Resources.login;
+                LoginManager.LogedIn = true;
             }
         }
 
@@ -195,6 +239,12 @@ namespace StationTireInspection
             ActivePage = stationSettings;
         }
 
+        private void btnMainAppSettings_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            ActivePage = mainAppConnectionSettings;
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -218,6 +268,13 @@ namespace StationTireInspection
         private void lblTitle_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            EncriptionManager.DecryptFile("settings.json", "W]rs6^%]");
+            File.WriteAllText("settings.json", Settings.Serialize());
+            EncriptionManager.EncryptFile("settings.json", "W]rs6^%]");
         }
     }
 }
