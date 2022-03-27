@@ -293,6 +293,7 @@ namespace StationTireInspection.Forms
             this.tbDatabasePassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbDatabasePassword.Location = new System.Drawing.Point(3, 388);
             this.tbDatabasePassword.Name = "tbDatabasePassword";
+            this.tbDatabasePassword.PasswordChar = '*';
             this.tbDatabasePassword.Size = new System.Drawing.Size(280, 29);
             this.tbDatabasePassword.TabIndex = 10;
             this.tbDatabasePassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

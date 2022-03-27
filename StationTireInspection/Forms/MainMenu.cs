@@ -14,6 +14,9 @@ namespace StationTireInspection
         private readonly Color SELECTED_BUTTON_COLOR = Color.FromArgb(128, 0, 128);
         private readonly Color DEFAULT_BUTTON_COLOR = Color.FromArgb(64,64,64);
 
+        private readonly string SETTING_FILE_PATH = "settings.json";
+        private readonly string ENCRIPTION_KEY = "W]rs6^%]";
+
         private SettingsJDO Settings { get; set; } = new SettingsJDO();
 
         private MySQLDatabase mySQLDatabase = new MySQLDatabase();
@@ -68,73 +71,55 @@ namespace StationTireInspection
         {
             InitializeComponent();
 
-            
-
-            if (File.Exists("settings.json"))
-            {
-                EncriptionManager.DecryptFile("settings.json", "W]rs6^%]");
-                Settings = SettingsJDO.Deserialize(File.ReadAllText("settings.json"));
-            }
-            else
-            {
-                File.WriteAllText("settings.json", Settings.Serialize());
-            }
-
-            EncriptionManager.EncryptFile("settings.json", "W]rs6^%]");
-
-            //SettingsData = SettingsJDO.Deserialize()
+            ReadSettingsJSON(SETTING_FILE_PATH, ENCRIPTION_KEY);
 
             Translator.LanguageChanged += Translate;
 
-            login = new Login();
-            changePassword = new ChangePassword();
-            diagnostics = new Diagnostics();
+            
+            changePassword = new ChangePassword(mySQLDatabase, Settings);
+            login = new Login(mySQLDatabase, Settings, changePassword);
+            diagnostics = new Diagnostics(mySQLDatabase);
             databaseSettings = new DatabaseSettings(Settings);
             aboutApp = new AboutApp();
             barcodeReaderSettings = new BarcodeReaderSettings(Settings);
             stationSettings = new StationSettings(Settings);
             mainAppConnectionSettings = new MainAppConnectionSettings(Settings);
 
+            login.LoginResultChanged += LoginChanged;
             //connectToDatabase.clientStatusDot1.Client = mySQLDatabase;
 
-            login.TopLevel = false;
-            login.Dock = DockStyle.Fill;
-            pagePanel.Controls.Add(login);
-
-            changePassword.TopLevel = false;
-            changePassword.Dock = DockStyle.Fill;
-            pagePanel.Controls.Add(changePassword);
-
-            diagnostics.TopLevel = false;
-            diagnostics.Dock = DockStyle.Fill;
-            pagePanel.Controls.Add(diagnostics);
-
-            databaseSettings.TopLevel = false;
-            databaseSettings.Dock = DockStyle.Fill;
-            pagePanel.Controls.Add(databaseSettings);
-
-            aboutApp.TopLevel = false;
-            aboutApp.Dock = DockStyle.Fill;
-            pagePanel.Controls.Add(aboutApp);
-
-            stationSettings.TopLevel = false;
-            stationSettings.Dock = DockStyle.Fill;
-            pagePanel.Controls.Add(stationSettings);
-
-            barcodeReaderSettings.TopLevel = false;
-            barcodeReaderSettings.Dock = DockStyle.Fill;
-            pagePanel.Controls.Add(barcodeReaderSettings);
-
-            mainAppConnectionSettings.TopLevel = false;
-            mainAppConnectionSettings.Dock = DockStyle.Fill;
-            pagePanel.Controls.Add(mainAppConnectionSettings);
-
+            AddPage(login);
+            AddPage(changePassword);
+            AddPage(diagnostics);
+            AddPage(databaseSettings);
+            AddPage(stationSettings);
+            AddPage(barcodeReaderSettings);
+            AddPage(mainAppConnectionSettings);
+            AddPage(aboutApp);
 
             Translator.Language = Language.ENG;
             LoginManager.LogedIn = true;
 
             ActiveButton = btnAboutApp;
             ActivePage = aboutApp;
+
+            mySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
+        }
+
+        private void AddPage(Form form)
+        {
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            pagePanel.Controls.Add(form);
+        }
+
+        private void LoginChanged(object sender, Result e)
+        {
+            if(e == Result.ChangePassword)
+            {
+                ActiveButton = btnChangePassword;
+                ActivePage = changePassword;
+            }
         }
 
         private void Translate(object sender, Language e)
@@ -163,6 +148,28 @@ namespace StationTireInspection
                 btnStationSettings.Text = "Station Settings";
                 btnAboutApp.Text = "About App";
             }
+        }
+
+        private void ReadSettingsJSON(string Path, string CryptKey)
+        {
+            if (File.Exists(Path))
+            {
+                EncriptionManager.DecryptFile(Path, CryptKey);
+                Settings = SettingsJDO.Deserialize(File.ReadAllText(Path));
+            }
+            else
+            {
+                File.WriteAllText(Path, Settings.Serialize());
+            }
+
+            EncriptionManager.EncryptFile(Path, CryptKey);
+        }
+
+        private void WriteSettingsJSON(string Path, string CryptKey)
+        {
+            EncriptionManager.DecryptFile(Path, CryptKey);
+            File.WriteAllText(Path, Settings.Serialize());
+            EncriptionManager.EncryptFile(Path, CryptKey);
         }
 
         private void pbLoged_Click(object sender, EventArgs e)
@@ -272,9 +279,7 @@ namespace StationTireInspection
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            EncriptionManager.DecryptFile("settings.json", "W]rs6^%]");
-            File.WriteAllText("settings.json", Settings.Serialize());
-            EncriptionManager.EncryptFile("settings.json", "W]rs6^%]");
+            WriteSettingsJSON(SETTING_FILE_PATH, ENCRIPTION_KEY);
         }
     }
 }

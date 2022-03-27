@@ -176,7 +176,7 @@ namespace StationTireInspection.Forms
             // 
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 292F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 348F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.btnClear, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.tbBuffer, 1, 1);
@@ -201,7 +201,7 @@ namespace StationTireInspection.Forms
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(262, 476);
+            this.btnClear.Location = new System.Drawing.Point(290, 476);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(97, 33);
             this.btnClear.TabIndex = 5;
@@ -212,10 +212,10 @@ namespace StationTireInspection.Forms
             // 
             this.tbBuffer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbBuffer.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbBuffer.Location = new System.Drawing.Point(73, 42);
+            this.tbBuffer.Location = new System.Drawing.Point(45, 42);
             this.tbBuffer.Multiline = true;
             this.tbBuffer.Name = "tbBuffer";
-            this.tbBuffer.Size = new System.Drawing.Size(286, 428);
+            this.tbBuffer.Size = new System.Drawing.Size(342, 428);
             this.tbBuffer.TabIndex = 0;
             this.tbBuffer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -227,9 +227,9 @@ namespace StationTireInspection.Forms
             this.lblBarcodeBuffer.AutoSize = true;
             this.lblBarcodeBuffer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBarcodeBuffer.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblBarcodeBuffer.Location = new System.Drawing.Point(73, 0);
+            this.lblBarcodeBuffer.Location = new System.Drawing.Point(45, 0);
             this.lblBarcodeBuffer.Name = "lblBarcodeBuffer";
-            this.lblBarcodeBuffer.Size = new System.Drawing.Size(286, 39);
+            this.lblBarcodeBuffer.Size = new System.Drawing.Size(342, 39);
             this.lblBarcodeBuffer.TabIndex = 1;
             this.lblBarcodeBuffer.Text = "Barcode Buffer";
             this.lblBarcodeBuffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

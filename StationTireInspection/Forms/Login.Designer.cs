@@ -145,6 +145,7 @@ namespace StationTireInspection.Forms
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnLogoff
             // 
@@ -162,6 +163,7 @@ namespace StationTireInspection.Forms
             this.btnLogoff.TabIndex = 4;
             this.btnLogoff.Text = "Logoff";
             this.btnLogoff.UseVisualStyleBackColor = false;
+            this.btnLogoff.Click += new System.EventHandler(this.btnLogoff_Click);
             // 
             // tableLayoutPanel2
             // 

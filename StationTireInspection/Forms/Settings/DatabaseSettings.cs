@@ -155,7 +155,7 @@ namespace StationTireInspection.Forms
             tbDatabaseName.Text = Settings.DatabaseSettings.DatabaseName;
             tbTableName.Text = Settings.DatabaseSettings.TableName;
             tbDatabaseUserName.Text = Settings.DatabaseSettings.DatabaseUserName;
-            tbDatabasePassword.Text = "";
+            tbDatabasePassword.Text = Settings.DatabaseSettings.DatabasePassword;
         }
     }
 }

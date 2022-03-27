@@ -11,12 +11,19 @@ namespace StationTireInspection.Forms
 {
     public partial class Diagnostics : Form
     {
+        MySQLDatabase MySQLDatabase;
+
         private string[] BufferItems = new string[23];
 
-        public Diagnostics()
+        public Diagnostics(MySQLDatabase mySQLDatabase)
         {
             InitializeComponent();
+
+            MySQLDatabase = mySQLDatabase;
+
             Translator.LanguageChanged += Translate;
+
+            clientStatusDot1.Client = MySQLDatabase;
         }
 
         private void Translate(object sender, Language e)
