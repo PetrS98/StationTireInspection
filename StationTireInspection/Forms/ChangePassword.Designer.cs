@@ -40,6 +40,8 @@ namespace StationTireInspection.Forms
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
+            this.lblActualPassword = new System.Windows.Forms.Label();
+            this.tbActualPassword = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -67,14 +69,19 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tbUserName, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblUserName, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tbConfirmNewPassword, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.lblConfirmNewPassword, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.tbNewPassword, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.lblNewPassword, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.tbConfirmNewPassword, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.lblConfirmNewPassword, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.tbNewPassword, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.lblNewPassword, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.lblActualPassword, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tbActualPassword, 0, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(76, 23);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 11;
+            this.tableLayoutPanel1.RowCount = 14;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
@@ -86,8 +93,7 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(286, 436);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(286, 537);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tbUserName
@@ -119,7 +125,7 @@ namespace StationTireInspection.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbConfirmNewPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbConfirmNewPassword.Location = new System.Drawing.Point(3, 198);
+            this.tbConfirmNewPassword.Location = new System.Drawing.Point(3, 279);
             this.tbConfirmNewPassword.Name = "tbConfirmNewPassword";
             this.tbConfirmNewPassword.PasswordChar = '*';
             this.tbConfirmNewPassword.Size = new System.Drawing.Size(280, 29);
@@ -131,7 +137,7 @@ namespace StationTireInspection.Forms
             this.lblConfirmNewPassword.AutoSize = true;
             this.lblConfirmNewPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblConfirmNewPassword.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblConfirmNewPassword.Location = new System.Drawing.Point(3, 170);
+            this.lblConfirmNewPassword.Location = new System.Drawing.Point(3, 251);
             this.lblConfirmNewPassword.Name = "lblConfirmNewPassword";
             this.lblConfirmNewPassword.Size = new System.Drawing.Size(211, 25);
             this.lblConfirmNewPassword.TabIndex = 2;
@@ -143,8 +149,9 @@ namespace StationTireInspection.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNewPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbNewPassword.Location = new System.Drawing.Point(3, 117);
+            this.tbNewPassword.Location = new System.Drawing.Point(3, 198);
             this.tbNewPassword.Name = "tbNewPassword";
+            this.tbNewPassword.PasswordChar = '*';
             this.tbNewPassword.Size = new System.Drawing.Size(280, 29);
             this.tbNewPassword.TabIndex = 1;
             // 
@@ -154,7 +161,7 @@ namespace StationTireInspection.Forms
             this.lblNewPassword.AutoSize = true;
             this.lblNewPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblNewPassword.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblNewPassword.Location = new System.Drawing.Point(3, 89);
+            this.lblNewPassword.Location = new System.Drawing.Point(3, 170);
             this.lblNewPassword.Name = "lblNewPassword";
             this.lblNewPassword.Size = new System.Drawing.Size(138, 25);
             this.lblNewPassword.TabIndex = 0;
@@ -166,7 +173,7 @@ namespace StationTireInspection.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.btnChangePassword);
             this.panel1.Controls.Add(this.btnCancle);
-            this.panel1.Location = new System.Drawing.Point(3, 256);
+            this.panel1.Location = new System.Drawing.Point(3, 337);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(280, 43);
             this.panel1.TabIndex = 6;
@@ -207,6 +214,30 @@ namespace StationTireInspection.Forms
             this.btnCancle.UseVisualStyleBackColor = false;
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
+            // lblActualPassword
+            // 
+            this.lblActualPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblActualPassword.AutoSize = true;
+            this.lblActualPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblActualPassword.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblActualPassword.Location = new System.Drawing.Point(3, 89);
+            this.lblActualPassword.Name = "lblActualPassword";
+            this.lblActualPassword.Size = new System.Drawing.Size(153, 25);
+            this.lblActualPassword.TabIndex = 7;
+            this.lblActualPassword.Text = "Actual Password:";
+            // 
+            // tbActualPassword
+            // 
+            this.tbActualPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbActualPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbActualPassword.Location = new System.Drawing.Point(3, 117);
+            this.tbActualPassword.Name = "tbActualPassword";
+            this.tbActualPassword.PasswordChar = '*';
+            this.tbActualPassword.Size = new System.Drawing.Size(280, 29);
+            this.tbActualPassword.TabIndex = 8;
+            // 
             // ChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -239,5 +270,7 @@ namespace StationTireInspection.Forms
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnChangePassword;
         private System.Windows.Forms.Button btnCancle;
+        private System.Windows.Forms.Label lblActualPassword;
+        private System.Windows.Forms.TextBox tbActualPassword;
     }
 }

@@ -17,14 +17,14 @@ namespace StationTireInspection.Forms
         SettingsJDO Settings;
 
         string[] ErrorTitle = new string[2];
-        string[] Errors = new string[3];
+        string[] Errors = new string[4];
 
         string MessageTitle = "";
         string Message = "";
 
         private string userID_ChangePassword;
 
-        public string UserID_ChangePassword
+        public string ID_ChangePassCMD
         {
             get { return userID_ChangePassword; }
             set 
@@ -35,9 +35,27 @@ namespace StationTireInspection.Forms
             }
         }
 
+        private string actualPassword_ChangePassCMD;
+
+        public string ActualPassword_ChangePassCMD
+        {
+            get { return actualPassword_ChangePassCMD; }
+            set 
+            {
+                if (value != "" || value != null) CopyUserPassword(value);
+
+                actualPassword_ChangePassCMD = value; 
+            }
+        }
+
         private void CopyUserID(string UserID)
         {
             tbUserName.Text = UserID;
+        }
+
+        private void CopyUserPassword(string UserPassword)
+        {
+            tbActualPassword.Text = UserPassword;
         }
 
         public ChangePassword(MySQLDatabase mySQLDatabase, SettingsJDO settings)
@@ -55,6 +73,7 @@ namespace StationTireInspection.Forms
             if (Translator.Language == Language.CZ)
             {
                 lblNewPassword.Text = "Nové Heslo:";
+                lblActualPassword.Text = "Aktuální Heslo:";
                 lblConfirmNewPassword.Text = "Potvrzení Nového Hesla:";
                 btnChangePassword.Text = "Změnit";
                 btnCancle.Text = "Zrušit";
@@ -62,11 +81,11 @@ namespace StationTireInspection.Forms
                 ErrorTitle[0] = "Chyba uživatelského vstupu";
 
                 Errors[0] = "Uživatelské jméno musí být číslo. Např. 40156312";
-                Errors[1] = "Heslo a potvrzení sesla se musí shodovat.";
+                Errors[1] = "Aktuální heslo nesmí být prázdné!";
+                Errors[3] = "Heslo a potvrzení sesla se musí shodovat.";
 
                 ErrorTitle[1] = "Chyba";
-
-                Errors[2] = "Změnu hesla nebylo možné dokončit.";
+                Errors[2] = "Aktuální zadané heslo je nesprávné.";
 
                 MessageTitle = "Zpráva";
 
@@ -75,6 +94,7 @@ namespace StationTireInspection.Forms
             else if (Translator.Language == Language.ENG)
             {
                 lblNewPassword.Text = "New Password:";
+                lblActualPassword.Text = "Actual Password";
                 lblConfirmNewPassword.Text = "Confirm New Password:";
                 btnChangePassword.Text = "Change";
                 btnCancle.Text = "Cancel";
@@ -82,11 +102,12 @@ namespace StationTireInspection.Forms
                 ErrorTitle[0] = "User Input Error";
 
                 Errors[0] = "User name must be number. Eg. 40156312";
-                Errors[1] = "Password and confirm password must be same.";
+                Errors[1] = "Actual password must not be empty!";
+                Errors[3] = "Password and confirm password must be same.";
 
                 ErrorTitle[1] = "Error";
 
-                Errors[2] = "Password change could not be completed.";
+                Errors[2] = "Actual password is not correct!";
 
                 MessageTitle = "Message";
 
@@ -107,6 +128,7 @@ namespace StationTireInspection.Forms
         public void ClearInputs()
         {
             tbUserName.Text = "";
+            tbActualPassword.Text = "";
             tbNewPassword.Text = "";
             tbConfirmNewPassword.Text = "";
         }
@@ -119,9 +141,21 @@ namespace StationTireInspection.Forms
                 return;
             }
 
-            if (tbNewPassword.Text != tbConfirmNewPassword.Text)
+            if (tbActualPassword.Text == "")
             {
                 CustomMessageBox.ShowPopup(ErrorTitle[0], Errors[1]);
+                return;
+            }
+
+            if (tbActualPassword.Text != MySQLDatabase.ReadUserPassword(Settings.DatabaseSettings.TableName, int.Parse(tbUserName.Text)))
+            {
+                CustomMessageBox.ShowPopup(ErrorTitle[1], Errors[2]);
+                return;
+            }
+
+            if (tbNewPassword.Text != tbConfirmNewPassword.Text)
+            {
+                CustomMessageBox.ShowPopup(ErrorTitle[0], Errors[3]);
                 return;
             }
 
@@ -133,7 +167,6 @@ namespace StationTireInspection.Forms
 
                 return;
             }
-            CustomMessageBox.ShowPopup(ErrorTitle[1], Errors[3]);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Threading.Tasks;
 using System.Timers;
 using MySqlConnector;
 using StationTireInspection.Forms.MessageBoxes;
@@ -32,6 +33,11 @@ namespace StationTireInspection.Classes
         {
             _timerStatus.Interval = 100;
             _timerStatus.Elapsed += CheckStatus;
+        }
+
+        async public void ConnectToDB_Async(string IpAddress, string UserName, string Password)
+        {
+            await Task.Run(() => ConnectToDB(IpAddress, UserName, Password));
         }
 
         public bool ConnectToDB(string IpAddress, string UserName, string Password)
@@ -83,6 +89,30 @@ namespace StationTireInspection.Classes
                 return UserInformation;
             }
             catch(Exception ex)
+            {
+                CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                return null;
+            }
+        }
+
+        public string ReadUserPassword(string TableName, int PersonalID)
+        {
+            using MySqlCommand mySqlCommand = new MySqlCommand();
+
+            mySqlCommand.Connection = mySqlConnection;
+            mySqlCommand.CommandText = @"SELECT password FROM " + TableName + " WHERE personal_id = @PersonalID;";
+
+            mySqlCommand.Parameters.AddWithValue("@PersonalID", PersonalID);
+
+            try
+            {
+                using MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+
+                mySqlDataReader.Read();
+
+                return mySqlDataReader.GetString(0);
+            }
+            catch (Exception ex)
             {
                 CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
                 return null;

@@ -8,12 +8,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using VisualInspection.Utils.Net;
+using VisualInspection.Utils;
 
 namespace StationTireInspection.Forms
 {
     public partial class DatabaseSettings : Form
     {
         private SettingsJDO Settings;
+        MySQLDatabase MySQLDatabase;
 
         private string ErrorMessageBoxTitle = "";
         private string[] Errors = new string[5];
@@ -21,14 +24,17 @@ namespace StationTireInspection.Forms
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public DatabaseSettings(SettingsJDO settings)
+        public DatabaseSettings(SettingsJDO settings, MySQLDatabase mySQLDatabase)
         {
             InitializeComponent();
 
+            MySQLDatabase = mySQLDatabase;
+
             Settings = settings;
 
-            SetInitValue();
+            SetJSONDataToContols();
 
+            MySQLDatabase.StatusChanged += DBStatusChange;
             Translator.LanguageChanged += Translate;
         }
 
@@ -45,6 +51,7 @@ namespace StationTireInspection.Forms
                 btnConnect.Text = "Připojit";
                 btnDisconnect.Text = "Odpojit";
                 btnApply.Text = "Použít";
+                btnLoadSettings.Text = "Načíst Nastavení";
 
                 ErrorMessageBoxTitle = "Chyba uživatelského vstupu";
 
@@ -69,6 +76,7 @@ namespace StationTireInspection.Forms
                 btnConnect.Text = "Connect";
                 btnDisconnect.Text = "Disconnect";
                 btnApply.Text = "Apply";
+                btnLoadSettings.Text = "Load Settings";
 
                 ErrorMessageBoxTitle = "User Input Error";
 
@@ -81,6 +89,20 @@ namespace StationTireInspection.Forms
                 MessageMessageBoxTitle = "Message";
 
                 Message = "Data was be correctly seved";
+            }
+        }
+
+        private void DBStatusChange(object sender, ClientStatus e)
+        {
+            if (e.Equals(ClientStatus.Connected))
+            {
+                btnConnect.InvokeIfRequired((btn) => btn.Enabled = false);
+                btnDisconnect.InvokeIfRequired((btn) => btn.Enabled = true);
+            }
+            else if (e.Equals(ClientStatus.Disconnected))
+            {
+                btnConnect.InvokeIfRequired((btn) => btn.Enabled = true);
+                btnDisconnect.InvokeIfRequired((btn) => btn.Enabled = false);
             }
         }
 
@@ -139,17 +161,24 @@ namespace StationTireInspection.Forms
             CustomMessageBox.ShowPopup(MessageMessageBoxTitle, Message);
         }
 
+        private void btnLoadSettings_Click(object sender, EventArgs e)
+        {
+            SetJSONDataToContols();
+        }
+
         private void btnConnect_Click(object sender, EventArgs e)
         {
-
+            if (MySQLDatabase.Equals(ClientStatus.Disconnected)) return;
+            MySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-
+            if (MySQLDatabase.Equals(ClientStatus.Connected)) return;
+            MySQLDatabase.DisconnectFromDB();
         }
 
-        private void SetInitValue()
+        private void SetJSONDataToContols()
         {
             ipAddressBox.IPAddress = Settings.DatabaseSettings.IPAddress;
             tbDatabaseName.Text = Settings.DatabaseSettings.DatabaseName;

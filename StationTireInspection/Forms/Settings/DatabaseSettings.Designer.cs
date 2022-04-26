@@ -46,6 +46,7 @@ namespace StationTireInspection.Forms
             this.lblDatabasePassword = new System.Windows.Forms.Label();
             this.tbDatabasePassword = new System.Windows.Forms.TextBox();
             this.btnApply = new System.Windows.Forms.Button();
+            this.btnLoadSettings = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,7 +65,7 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(439, 676);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(439, 792);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -84,9 +85,10 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel1.Controls.Add(this.lblDatabasePassword, 0, 13);
             this.tableLayoutPanel1.Controls.Add(this.tbDatabasePassword, 0, 14);
             this.tableLayoutPanel1.Controls.Add(this.btnApply, 0, 19);
+            this.tableLayoutPanel1.Controls.Add(this.btnLoadSettings, 0, 20);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(76, 23);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 21;
+            this.tableLayoutPanel1.RowCount = 22;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
@@ -105,10 +107,11 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(286, 634);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(286, 717);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -308,7 +311,7 @@ namespace StationTireInspection.Forms
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(3, 572);
+            this.btnApply.Location = new System.Drawing.Point(3, 542);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(280, 44);
             this.btnApply.TabIndex = 11;
@@ -316,12 +319,30 @@ namespace StationTireInspection.Forms
             this.btnApply.UseVisualStyleBackColor = false;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
+            // btnLoadSettings
+            // 
+            this.btnLoadSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnLoadSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLoadSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnLoadSettings.FlatAppearance.BorderSize = 0;
+            this.btnLoadSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
+            this.btnLoadSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLoadSettings.ForeColor = System.Drawing.Color.White;
+            this.btnLoadSettings.Location = new System.Drawing.Point(3, 592);
+            this.btnLoadSettings.Name = "btnLoadSettings";
+            this.btnLoadSettings.Size = new System.Drawing.Size(280, 44);
+            this.btnLoadSettings.TabIndex = 12;
+            this.btnLoadSettings.Text = "Load Settings";
+            this.btnLoadSettings.UseVisualStyleBackColor = false;
+            this.btnLoadSettings.Click += new System.EventHandler(this.btnLoadSettings_Click);
+            // 
             // DatabaseSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(439, 688);
+            this.ClientSize = new System.Drawing.Size(439, 823);
             this.Controls.Add(this.tableLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DatabaseSettings";
@@ -353,5 +374,6 @@ namespace StationTireInspection.Forms
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnDisconnect;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.Button btnLoadSettings;
     }
 }

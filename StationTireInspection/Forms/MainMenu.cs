@@ -79,14 +79,13 @@ namespace StationTireInspection
             changePassword = new ChangePassword(mySQLDatabase, Settings);
             login = new Login(mySQLDatabase, Settings, changePassword);
             diagnostics = new Diagnostics(mySQLDatabase);
-            databaseSettings = new DatabaseSettings(Settings);
+            databaseSettings = new DatabaseSettings(Settings, mySQLDatabase);
             aboutApp = new AboutApp();
             barcodeReaderSettings = new BarcodeReaderSettings(Settings);
             stationSettings = new StationSettings(Settings);
             mainAppConnectionSettings = new MainAppConnectionSettings(Settings);
 
             login.LoginResultChanged += LoginChanged;
-            //connectToDatabase.clientStatusDot1.Client = mySQLDatabase;
 
             AddPage(login);
             AddPage(changePassword);
@@ -103,6 +102,7 @@ namespace StationTireInspection
             ActiveButton = btnAboutApp;
             ActivePage = aboutApp;
 
+            //mySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
             mySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
         }
 

@@ -136,7 +136,8 @@ namespace StationTireInspection.Forms
             {
                 if (CheckPassword(tbPassword.Text, UserInformations.Password))
                 {
-                    ChangePassword.UserID_ChangePassword = tbUserName.Text;
+                    ChangePassword.ID_ChangePassCMD = tbUserName.Text;
+                    ChangePassword.ActualPassword_ChangePassCMD = tbPassword.Text;
                     ClearInputs();
 
                     CustomMessageBox.ShowPopup(MessageTitle, Messages[1]);
