@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="MySqlConnector" Version="2.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="SuperSimpleTcp" Version="2.4.1.2" />
   </ItemGroup>
 
   <ItemGroup>

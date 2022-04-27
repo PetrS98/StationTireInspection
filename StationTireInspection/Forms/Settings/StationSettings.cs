@@ -1,5 +1,6 @@
 ﻿using StationTireInspection.Classes;
 using StationTireInspection.Forms.MessageBoxes;
+using StationTireInspection.JDO.DataToServer;
 using StationTireInspection.UDT;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,7 @@ namespace StationTireInspection.Forms
             {
                 lblTitle.Text = "Nastavení Databáze";
                 lblName.Text = "Jméno:";
+                lblStationID.Text = "ID: ";
                 btnApply.Text = "Použít";
 
                 ErrorMessageBoxTitle = "Název stanice nesmí být prázdný.";
@@ -53,6 +55,7 @@ namespace StationTireInspection.Forms
             {
                 lblTitle.Text = "Database Settings";
                 lblName.Text = "Name:";
+                lblStationID.Text = "ID: ";
                 btnApply.Text = "Apply";
 
                 ErrorMessageBoxTitle = "User Input Error";
@@ -77,12 +80,28 @@ namespace StationTireInspection.Forms
                 return;
             }
 
+            Settings.StationSettings.StationID = cbStaionID.SelectedIndex;
+
             CustomMessageBox.ShowPopup(MessageMessageBoxTitle, Message);
         }
 
         private void SetInitValue()
         {
             tbName.Text = Settings.StationSettings.StationName;
+
+            if (Settings.StationSettings.StationID > 0)
+            {
+                cbStaionID.SelectedIndex = Settings.StationSettings.StationID - 1;
+            }
+            else
+            {
+                cbStaionID.SelectedIndex = Settings.StationSettings.StationID;
+            }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

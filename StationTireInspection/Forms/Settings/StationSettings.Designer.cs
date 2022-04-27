@@ -31,12 +31,16 @@ namespace StationTireInspection.Forms
         {
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblStationID = new System.Windows.Forms.Label();
+            this.cbStaionID = new System.Windows.Forms.ComboBox();
             this.btnApply = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -59,22 +63,64 @@ namespace StationTireInspection.Forms
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.btnApply, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnApply, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.lblTitle, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblName, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tbName, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(76, 23);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(286, 242);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72F));
+            this.tableLayoutPanel3.Controls.Add(this.lblStationID, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.cbStaionID, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 117);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 27);
+            this.tableLayoutPanel3.TabIndex = 4;
+            // 
+            // lblStationID
+            // 
+            this.lblStationID.AutoSize = true;
+            this.lblStationID.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblStationID.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblStationID.Location = new System.Drawing.Point(3, 0);
+            this.lblStationID.Name = "lblStationID";
+            this.lblStationID.Size = new System.Drawing.Size(39, 25);
+            this.lblStationID.TabIndex = 6;
+            this.lblStationID.Text = "ID: ";
+            // 
+            // cbStaionID
+            // 
+            this.cbStaionID.FormattingEnabled = true;
+            this.cbStaionID.Items.AddRange(new object[] {
+            "#1",
+            "#2",
+            "#3",
+            "#4"});
+            this.cbStaionID.Location = new System.Drawing.Point(59, 3);
+            this.cbStaionID.Name = "cbStaionID";
+            this.cbStaionID.Size = new System.Drawing.Size(121, 23);
+            this.cbStaionID.TabIndex = 4;
             // 
             // btnApply
             // 
@@ -86,7 +132,7 @@ namespace StationTireInspection.Forms
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(3, 187);
+            this.btnApply.Location = new System.Drawing.Point(3, 190);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(280, 44);
             this.btnApply.TabIndex = 5;
@@ -145,6 +191,8 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -157,5 +205,8 @@ namespace StationTireInspection.Forms
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.ComboBox cbStaionID;
+        private System.Windows.Forms.Label lblStationID;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }

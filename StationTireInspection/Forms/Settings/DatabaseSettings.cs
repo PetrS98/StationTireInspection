@@ -51,7 +51,6 @@ namespace StationTireInspection.Forms
                 btnConnect.Text = "Připojit";
                 btnDisconnect.Text = "Odpojit";
                 btnApply.Text = "Použít";
-                btnLoadSettings.Text = "Načíst Nastavení";
 
                 ErrorMessageBoxTitle = "Chyba uživatelského vstupu";
 
@@ -76,7 +75,6 @@ namespace StationTireInspection.Forms
                 btnConnect.Text = "Connect";
                 btnDisconnect.Text = "Disconnect";
                 btnApply.Text = "Apply";
-                btnLoadSettings.Text = "Load Settings";
 
                 ErrorMessageBoxTitle = "User Input Error";
 
@@ -161,11 +159,6 @@ namespace StationTireInspection.Forms
             CustomMessageBox.ShowPopup(MessageMessageBoxTitle, Message);
         }
 
-        private void btnLoadSettings_Click(object sender, EventArgs e)
-        {
-            SetJSONDataToContols();
-        }
-
         private void btnConnect_Click(object sender, EventArgs e)
         {
             if (MySQLDatabase.Equals(ClientStatus.Disconnected)) return;
@@ -176,6 +169,11 @@ namespace StationTireInspection.Forms
         {
             if (MySQLDatabase.Equals(ClientStatus.Connected)) return;
             MySQLDatabase.DisconnectFromDB();
+        }
+
+        private void DatabaseSettings_VisibleChanged(object sender, EventArgs e)
+        {
+            SetJSONDataToContols();
         }
 
         private void SetJSONDataToContols()

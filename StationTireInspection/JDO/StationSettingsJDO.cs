@@ -7,5 +7,6 @@ namespace StationTireInspection.UDT
     public class StationSettingsJDO
     {
         public string StationName { get; set; } = "Station 1";
+        public int StationID { get; set; } = 1;
     }
 }

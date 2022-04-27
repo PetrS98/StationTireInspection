@@ -1,5 +1,6 @@
 ﻿using StationTireInspection.Classes;
 using StationTireInspection.Forms.MessageBoxes;
+using StationTireInspection.JDO.DataToServer;
 using StationTireInspection.UDT;
 using System;
 using System.Collections.Generic;
@@ -169,6 +170,7 @@ namespace StationTireInspection.Forms
         private void btnLogoff_Click(object sender, EventArgs e)
         {
             ClearInputs();
+
             LoginResult = Result.NoLogged;
             EnableControls(true);
         }

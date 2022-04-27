@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using StationTireInspection.Classes;
 using StationTireInspection.Forms;
 using StationTireInspection.Forms.Settings;
+using StationTireInspection.JDO.DataToServer;
 using StationTireInspection.UDT;
 
 namespace StationTireInspection
@@ -18,9 +19,11 @@ namespace StationTireInspection
         private readonly string ENCRIPTION_KEY = "W]rs6^%]";
 
         private SettingsJDO Settings { get; set; } = new SettingsJDO();
+        private DataToServerJDO DataToServer { get; set; } = new DataToServerJDO();
 
         private MySQLDatabase mySQLDatabase = new MySQLDatabase();
 
+        private BarcodeReaderClient readerClient;
         private Login login;
         private ChangePassword changePassword;
         private Diagnostics diagnostics;
@@ -75,7 +78,7 @@ namespace StationTireInspection
 
             Translator.LanguageChanged += Translate;
 
-            
+            readerClient = new BarcodeReaderClient();
             changePassword = new ChangePassword(mySQLDatabase, Settings);
             login = new Login(mySQLDatabase, Settings, changePassword);
             diagnostics = new Diagnostics(mySQLDatabase);
@@ -104,6 +107,8 @@ namespace StationTireInspection
 
             //mySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
             mySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
+
+            readerClient.Connect();
         }
 
         private void AddPage(Form form)
@@ -119,6 +124,11 @@ namespace StationTireInspection
             {
                 ActiveButton = btnChangePassword;
                 ActivePage = changePassword;
+            }
+
+            if(e == Result.Logged)
+            {
+
             }
         }
 
