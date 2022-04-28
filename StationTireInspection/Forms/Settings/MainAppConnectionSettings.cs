@@ -8,12 +8,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using VisualInspection.Utils;
+using VisualInspection.Utils.Net;
 
 namespace StationTireInspection.Forms.Settings
 {
     public partial class MainAppConnectionSettings : Form
     {
         private SettingsJDO Settings;
+        private TCPIPClient ServerTCPClient;
 
         private string ErrorMessageBoxTitle = "";
         private string[] Errors = new string[2];
@@ -21,15 +24,31 @@ namespace StationTireInspection.Forms.Settings
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public MainAppConnectionSettings(SettingsJDO settings)
+        public MainAppConnectionSettings(SettingsJDO settings, TCPIPClient serverTCPClient)
         {
             InitializeComponent();
 
             Settings = settings;
+            ServerTCPClient = serverTCPClient;
 
             SetInitValue();
 
             Translator.LanguageChanged += Translate;
+            ServerTCPClient.StatusChanged += Status_Changed;
+        }
+
+        private void Status_Changed(object sender, ClientStatus e)
+        {
+            if (e.Equals(ClientStatus.Connected))
+            {
+                btnConnect.InvokeIfRequired((btn) => btn.Enabled = false);
+                btnDisconnect.InvokeIfRequired((btn) => btn.Enabled = true);
+            }
+            else if (e.Equals(ClientStatus.Disconnected))
+            {
+                btnConnect.InvokeIfRequired((btn) => btn.Enabled = true);
+                btnDisconnect.InvokeIfRequired((btn) => btn.Enabled = false);
+            }
         }
 
         private void Translate(object sender, Language e)
@@ -99,18 +118,25 @@ namespace StationTireInspection.Forms.Settings
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-
+            ServerTCPClient.IPAddress = Settings.MainAppConnectionSettings.IPAddress;
+            ServerTCPClient.Port = Settings.MainAppConnectionSettings.Port;
+            ServerTCPClient.Connect();
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-
+            ServerTCPClient.Disconnect(true);
         }
 
         private void SetInitValue()
         {
             ipAddressBox.IPAddress = Settings.MainAppConnectionSettings.IPAddress;
             tbPort.Text = Settings.MainAppConnectionSettings.Port.ToString();
+        }
+
+        private void MainAppConnectionSettings_VisibleChanged(object sender, EventArgs e)
+        {
+            SetInitValue();
         }
     }
 }

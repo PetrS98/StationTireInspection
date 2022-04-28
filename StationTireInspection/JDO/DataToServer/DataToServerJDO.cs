@@ -10,5 +10,6 @@ namespace StationTireInspection.JDO.DataToServer
         public StationInformationJDO StationInformation { get; set; } = new StationInformationJDO();
         public UserInformationJDO UserInformation { get; set; } = new UserInformationJDO();
         public int NonOperation { get; set; } = 0;
+        public string Barcode { get; set; }
     }
 }

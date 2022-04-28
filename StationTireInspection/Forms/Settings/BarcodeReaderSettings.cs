@@ -8,12 +8,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using VisualInspection.Utils;
+using VisualInspection.Utils.Net;
 
 namespace StationTireInspection.Forms
 {
     public partial class BarcodeReaderSettings : Form
     {
         private SettingsJDO Settings;
+        TCPIPClient ReaderTCPClient;
 
         private string ErrorMessageBoxTitle = "";
         private string[] Errors = new string[2];
@@ -21,15 +24,31 @@ namespace StationTireInspection.Forms
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public BarcodeReaderSettings(SettingsJDO settings)
+        public BarcodeReaderSettings(SettingsJDO settings, TCPIPClient readerTCPClient)
         {
             InitializeComponent();
 
             Settings = settings;
+            ReaderTCPClient = readerTCPClient;
 
             SetInitValue();
 
             Translator.LanguageChanged += Translate;
+            ReaderTCPClient.StatusChanged += Status_Changed;
+        }
+
+        private void Status_Changed(object sender, ClientStatus e)
+        {
+            if (e.Equals(ClientStatus.Connected))
+            {
+                btnConnect.InvokeIfRequired((btn) => btn.Enabled = false);
+                btnDisconnect.InvokeIfRequired((btn) => btn.Enabled = true);
+            }
+            else if (e.Equals(ClientStatus.Disconnected))
+            {
+                btnConnect.InvokeIfRequired((btn) => btn.Enabled = true);
+                btnDisconnect.InvokeIfRequired((btn) => btn.Enabled = false);
+            }
         }
 
         private void Translate(object sender, Language e)
@@ -54,7 +73,7 @@ namespace StationTireInspection.Forms
             }
             else if (Translator.Language == Language.ENG)
             {
-                lblTitle.Text = "Database Settings";
+                lblTitle.Text = "Barcode Reader Settings";
                 lblIPAddress.Text = "IP Address:";
                 lblPort.Text = "Port:";
                 btnConnect.Text = "Connect";
@@ -99,18 +118,25 @@ namespace StationTireInspection.Forms
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-
+            ReaderTCPClient.IPAddress = Settings.BarcodeReaderSettings.IPAddress;
+            ReaderTCPClient.Port = Settings.BarcodeReaderSettings.Port;
+            ReaderTCPClient.Connect();
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-
+            ReaderTCPClient.Disconnect(true);
         }
 
         private void SetInitValue()
         {
             ipAddressBox.IPAddress = Settings.BarcodeReaderSettings.IPAddress;
             tbPort.Text = Settings.BarcodeReaderSettings.Port.ToString();
+        }
+
+        private void BarcodeReaderSettings_VisibleChanged(object sender, EventArgs e)
+        {
+            SetInitValue();
         }
     }
 }

@@ -23,15 +23,17 @@ namespace StationTireInspection
 
         private MySQLDatabase mySQLDatabase = new MySQLDatabase();
 
-        private BarcodeReaderClient readerClient;
+        private TCPIPClient readerTCPClient;
+        private TCPIPClient serverTCPClient;
         private Login login;
         private ChangePassword changePassword;
-        private Diagnostics diagnostics;
+        private CommDiagnostics diagnostics;
         private DatabaseSettings databaseSettings;
         private AboutApp aboutApp;
         private BarcodeReaderSettings barcodeReaderSettings;
         private StationSettings stationSettings;
         private MainAppConnectionSettings mainAppConnectionSettings;
+        private ServerClient serverClient;
 
         private bool mouseDown;
         private Point lastLocation;
@@ -78,15 +80,18 @@ namespace StationTireInspection
 
             Translator.LanguageChanged += Translate;
 
-            readerClient = new BarcodeReaderClient();
+            
+            readerTCPClient = new TCPIPClient();
+            serverTCPClient = new TCPIPClient();
             changePassword = new ChangePassword(mySQLDatabase, Settings);
             login = new Login(mySQLDatabase, Settings, changePassword);
-            diagnostics = new Diagnostics(mySQLDatabase);
+            serverClient = new ServerClient(readerTCPClient, serverTCPClient, DataToServer, login);
+            barcodeReaderSettings = new BarcodeReaderSettings(Settings, readerTCPClient);
+            diagnostics = new CommDiagnostics(mySQLDatabase, readerTCPClient, serverTCPClient, DataToServer);
             databaseSettings = new DatabaseSettings(Settings, mySQLDatabase);
-            aboutApp = new AboutApp();
-            barcodeReaderSettings = new BarcodeReaderSettings(Settings);
+            aboutApp = new AboutApp();           
             stationSettings = new StationSettings(Settings);
-            mainAppConnectionSettings = new MainAppConnectionSettings(Settings);
+            mainAppConnectionSettings = new MainAppConnectionSettings(Settings, serverTCPClient);
 
             login.LoginResultChanged += LoginChanged;
 
@@ -108,7 +113,13 @@ namespace StationTireInspection
             //mySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
             mySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
 
-            readerClient.Connect();
+            readerTCPClient.IPAddress = Settings.BarcodeReaderSettings.IPAddress;
+            readerTCPClient.Port = Settings.BarcodeReaderSettings.Port;
+            readerTCPClient.Connect();
+
+            serverTCPClient.IPAddress = Settings.MainAppConnectionSettings.IPAddress;
+            serverTCPClient.Port = Settings.MainAppConnectionSettings.Port;
+            serverTCPClient.Connect();
         }
 
         private void AddPage(Form form)

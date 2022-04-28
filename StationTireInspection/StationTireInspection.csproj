@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Forms\Diagnostics.cs">
+    <Compile Update="Forms\CommDiagnostics.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\ChangePassword.cs">

@@ -99,9 +99,9 @@ namespace StationTireInspection.Forms
             }
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void StationSettings_VisibleChanged(object sender, EventArgs e)
         {
-
+            SetInitValue();
         }
     }
 }
