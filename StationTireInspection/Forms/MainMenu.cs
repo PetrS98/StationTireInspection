@@ -84,7 +84,7 @@ namespace StationTireInspection
             readerTCPClient = new TCPIPClient();
             serverTCPClient = new TCPIPClient();
             changePassword = new ChangePassword(mySQLDatabase, Settings);
-            login = new Login(mySQLDatabase, Settings, changePassword);
+            login = new Login(mySQLDatabase, Settings, changePassword, DataToServer);
             serverClient = new ServerClient(readerTCPClient, serverTCPClient, DataToServer, login);
             barcodeReaderSettings = new BarcodeReaderSettings(Settings, readerTCPClient);
             diagnostics = new CommDiagnostics(mySQLDatabase, readerTCPClient, serverTCPClient, DataToServer);

@@ -14,9 +14,15 @@ namespace StationTireInspection.Forms
 {
     public partial class Login : Form
     {
+        private readonly Color SELECTED_BUTTON_COLOR = Color.FromArgb(128, 0, 128);
+        private readonly Color DEFAULT_BUTTON_COLOR = Color.FromArgb(64, 64, 64);
+
         MySQLDatabase MySQLDatabase;
         SettingsJDO Settings;
         ChangePassword ChangePassword;
+        DataToServerJDO DataToServer;
+
+        private int NonOperation = 0;
 
         string ErrorTitle = "";
         string[] Errors = new string[3];
@@ -39,17 +45,36 @@ namespace StationTireInspection.Forms
             }
         }
 
-        public Login(MySQLDatabase mySQLDatabase, SettingsJDO settings, ChangePassword changePassword)
+        private Button activeButton;
+        public Button ActiveButton
+        {
+            get { return activeButton; }
+            set
+            {
+                if (activeButton != null)
+                {
+                    activeButton.BackColor = DEFAULT_BUTTON_COLOR;
+                }
+
+                activeButton = value;
+
+                activeButton.BackColor = SELECTED_BUTTON_COLOR;
+            }
+        }
+
+        public Login(MySQLDatabase mySQLDatabase, SettingsJDO settings, ChangePassword changePassword, DataToServerJDO dataToServer)
         {
             InitializeComponent();
 
             MySQLDatabase = mySQLDatabase;
             Settings = settings;
             ChangePassword = changePassword;
+            DataToServer = dataToServer;
 
             Translator.LanguageChanged += Translate;
 
             EnableControls(true);
+            EnableNonOPControls(true);
         }
 
         private void Translate(object sender, Language e)
@@ -98,6 +123,23 @@ namespace StationTireInspection.Forms
             tbPassword.Enabled = Enable;
             btnLogin.Enabled = Enable;
             btnLogoff.Enabled = !Enable;
+        }
+
+        private void EnableNonOPControls(bool Enable)
+        {
+            btnTireShortage.Enabled = Enable;
+            btnSafetyBreak.Enabled = Enable;
+            btnLunchBreak.Enabled = Enable;
+            btnCVError.Enabled = Enable;
+            btnPlanedStop.Enabled = Enable;
+            btnPlantShutdown.Enabled = Enable;
+            // Spare Buttons (Disable)
+            btnSpare_1.Enabled = false;
+            btnSpare_2.Enabled = false;
+            btnSpare_3.Enabled = false;
+            // --------------------------
+            btnCancel.Enabled = Enabled;
+            btnConfirnm.Enabled = Enabled;
         }
 
         public void ClearInputs()
@@ -173,6 +215,133 @@ namespace StationTireInspection.Forms
 
             LoginResult = Result.NoLogged;
             EnableControls(true);
+        }
+
+        private void btnTireShortage_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            NonOperation = 1;
+        }
+
+        private void btnSafetyBreak_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            NonOperation = 2;
+        }
+
+        private void btnLunchBreak_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            NonOperation = 3;
+        }
+
+        private void btnCVError_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            NonOperation = 4;
+        }
+
+        private void btnPlanedStop_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            NonOperation = 5;
+        }
+
+        private void btnPlantShutdown_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            NonOperation = 6;
+        }
+
+        private void btnSpare_1_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            NonOperation = 7;
+        }
+
+        private void btnSpare_2_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            NonOperation = 8;
+        }
+
+        private void btnSpare_3_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            NonOperation = 9;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            NonOperation = 0;
+            ActiveButton.BackColor = DEFAULT_BUTTON_COLOR;
+
+            tbTireShortage.BackColor = Color.White;
+            tbSafetyBreak.BackColor = Color.White;
+            tbLunchBreak.BackColor = Color.White;
+            tbCVError.BackColor = Color.White;
+            tbPlanedStop.BackColor = Color.White;
+            tbPlantShutdown.BackColor = Color.White;
+        }
+
+        private void btnConfirnm_Click(object sender, EventArgs e)
+        {
+            switch (NonOperation)
+            {
+                case 1:
+                    tbTireShortage.BackColor = Color.Red;
+                    tbSafetyBreak.BackColor = Color.White;
+                    tbLunchBreak.BackColor = Color.White;
+                    tbCVError.BackColor = Color.White;
+                    tbPlanedStop.BackColor = Color.White;
+                    tbPlantShutdown.BackColor = Color.White;
+                    break;
+                case 2:
+                    tbTireShortage.BackColor = Color.White;
+                    tbSafetyBreak.BackColor = Color.Red;
+                    tbLunchBreak.BackColor = Color.White;
+                    tbCVError.BackColor = Color.White;
+                    tbPlanedStop.BackColor = Color.White;
+                    tbPlantShutdown.BackColor = Color.White;
+                    break;
+                case 3:
+                    tbTireShortage.BackColor = Color.White;
+                    tbSafetyBreak.BackColor = Color.White;
+                    tbLunchBreak.BackColor = Color.Red;
+                    tbCVError.BackColor = Color.White;
+                    tbPlanedStop.BackColor = Color.White;
+                    tbPlantShutdown.BackColor = Color.White;
+                    break;
+                case 4:
+                    tbTireShortage.BackColor = Color.White;
+                    tbSafetyBreak.BackColor = Color.White;
+                    tbLunchBreak.BackColor = Color.White;
+                    tbCVError.BackColor = Color.Red;
+                    tbPlanedStop.BackColor = Color.White;
+                    tbPlantShutdown.BackColor = Color.White;
+                    break;
+                case 5:
+                    tbTireShortage.BackColor = Color.White;
+                    tbSafetyBreak.BackColor = Color.White;
+                    tbLunchBreak.BackColor = Color.White;
+                    tbCVError.BackColor = Color.White;
+                    tbPlanedStop.BackColor = Color.Red;
+                    tbPlantShutdown.BackColor = Color.White;
+                    break;
+                case 6:
+                    tbTireShortage.BackColor = Color.White;
+                    tbSafetyBreak.BackColor = Color.White;
+                    tbLunchBreak.BackColor = Color.White;
+                    tbCVError.BackColor = Color.White;
+                    tbPlanedStop.BackColor = Color.White;
+                    tbPlantShutdown.BackColor = Color.Red;
+                    break;
+
+                default:
+                    break;
+            }
+
+            DataToServer.NonOperation = NonOperation;
         }
     }
 }
