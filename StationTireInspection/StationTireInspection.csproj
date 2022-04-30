@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <Reference Include="VisualInspection.Utils">
-      <HintPath>bin\Debug\netcoreapp3.1\VisualInspection.Utils.dll</HintPath>
+      <HintPath>..\VisualInspection.Utils.dll</HintPath>
     </Reference>
   </ItemGroup>
 

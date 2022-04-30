@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using SimpleTcp;
 using StationTireInspection.Forms.MessageBoxes;
 using StationTireInspection.UDT;
@@ -51,7 +52,6 @@ namespace StationTireInspection.Classes
 
         public TCPIPClient()
         {
-
             ReconnectingTimer.Interval = 5000;
             ReconnectingTimer.Elapsed += TryReconnect;
 
@@ -83,6 +83,11 @@ namespace StationTireInspection.Classes
 
             try
             {
+                if (!(Client is null))
+                {
+                    Client.Events.DataReceived -= Client_DataReceived;
+                }
+
                 Client = new SimpleTcpClient(IPAddress, Port);
                 Client.Events.DataReceived += Client_DataReceived;
                 Client.Connect();
@@ -91,7 +96,8 @@ namespace StationTireInspection.Classes
             }
             catch(Exception ex)
             {
-                if(Reconnecting == false) CustomMessageBox.ShowPopup("TCPIP Client Error", ex.Message);
+                if (Reconnecting == false)
+                    CustomMessageBox.ShowPopup("TCPIP Client Error", ex.Message);
                 return false;
             } 
         }

@@ -583,7 +583,7 @@ namespace StationTireInspection.Forms
             this.btnConfirnm.TabIndex = 6;
             this.btnConfirnm.Text = "Potvrdit";
             this.btnConfirnm.UseVisualStyleBackColor = false;
-            this.btnConfirnm.Click += new System.EventHandler(this.btnConfirnm_Click);
+            this.btnConfirnm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // tableLayoutPanel10
             // 
@@ -625,7 +625,7 @@ namespace StationTireInspection.Forms
             this.btnSpare_1.TabIndex = 4;
             this.btnSpare_1.Text = "Spare";
             this.btnSpare_1.UseVisualStyleBackColor = false;
-            this.btnSpare_1.Click += new System.EventHandler(this.btnSpare_1_Click);
+            this.btnSpare_1.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 
             // btnSpare_2
             // 
@@ -643,7 +643,7 @@ namespace StationTireInspection.Forms
             this.btnSpare_2.TabIndex = 5;
             this.btnSpare_2.Text = "Spare";
             this.btnSpare_2.UseVisualStyleBackColor = false;
-            this.btnSpare_2.Click += new System.EventHandler(this.btnSpare_2_Click);
+            this.btnSpare_2.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 
             // btnSpare_3
             // 
@@ -661,7 +661,7 @@ namespace StationTireInspection.Forms
             this.btnSpare_3.TabIndex = 6;
             this.btnSpare_3.Text = "Spare";
             this.btnSpare_3.UseVisualStyleBackColor = false;
-            this.btnSpare_3.Click += new System.EventHandler(this.btnSpare_3_Click);
+            this.btnSpare_3.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 
             // tbSpare_1
             // 
@@ -733,7 +733,7 @@ namespace StationTireInspection.Forms
             this.btnCVError.TabIndex = 4;
             this.btnCVError.Text = "Porucha\r\nDopravníků";
             this.btnCVError.UseVisualStyleBackColor = false;
-            this.btnCVError.Click += new System.EventHandler(this.btnCVError_Click);
+            this.btnCVError.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 
             // btnPlanedStop
             // 
@@ -751,7 +751,7 @@ namespace StationTireInspection.Forms
             this.btnPlanedStop.TabIndex = 5;
             this.btnPlanedStop.Text = "Plánované\r\nVypnutí";
             this.btnPlanedStop.UseVisualStyleBackColor = false;
-            this.btnPlanedStop.Click += new System.EventHandler(this.btnPlanedStop_Click);
+            this.btnPlanedStop.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 
             // btnPlantShutdown
             // 
@@ -769,7 +769,7 @@ namespace StationTireInspection.Forms
             this.btnPlantShutdown.TabIndex = 6;
             this.btnPlantShutdown.Text = "Celozávodní\r\nOdestávka";
             this.btnPlantShutdown.UseVisualStyleBackColor = false;
-            this.btnPlantShutdown.Click += new System.EventHandler(this.btnPlantShutdown_Click);
+            this.btnPlantShutdown.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 
             // tbCVError
             // 
@@ -853,7 +853,7 @@ namespace StationTireInspection.Forms
             this.btnTireShortage.TabIndex = 4;
             this.btnTireShortage.Text = "Nedostatek\r\nPneumatik";
             this.btnTireShortage.UseVisualStyleBackColor = false;
-            this.btnTireShortage.Click += new System.EventHandler(this.btnTireShortage_Click);
+            this.btnTireShortage.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 
             // btnSafetyBreak
             // 
@@ -871,7 +871,7 @@ namespace StationTireInspection.Forms
             this.btnSafetyBreak.TabIndex = 5;
             this.btnSafetyBreak.Text = "Bezpečnost.\r\nPřestávka";
             this.btnSafetyBreak.UseVisualStyleBackColor = false;
-            this.btnSafetyBreak.Click += new System.EventHandler(this.btnSafetyBreak_Click);
+            this.btnSafetyBreak.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 
             // btnLunchBreak
             // 
@@ -889,7 +889,7 @@ namespace StationTireInspection.Forms
             this.btnLunchBreak.TabIndex = 6;
             this.btnLunchBreak.Text = "Obědová\r\nPřestávka";
             this.btnLunchBreak.UseVisualStyleBackColor = false;
-            this.btnLunchBreak.Click += new System.EventHandler(this.btnLunchBreak_Click);
+            this.btnLunchBreak.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 
             // tbTireShortage
             // 

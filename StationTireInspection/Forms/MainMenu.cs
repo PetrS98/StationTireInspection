@@ -115,11 +115,11 @@ namespace StationTireInspection
 
             readerTCPClient.IPAddress = Settings.BarcodeReaderSettings.IPAddress;
             readerTCPClient.Port = Settings.BarcodeReaderSettings.Port;
-            readerTCPClient.Connect();
+            //readerTCPClient.Connect();
 
             serverTCPClient.IPAddress = Settings.MainAppConnectionSettings.IPAddress;
             serverTCPClient.Port = Settings.MainAppConnectionSettings.Port;
-            serverTCPClient.Connect();
+            //serverTCPClient.Connect();
         }
 
         private void AddPage(Form form)
