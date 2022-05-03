@@ -15,6 +15,7 @@ namespace StationTireInspection.Forms
     public partial class StationSettings : Form
     {
         private SettingsJDO Settings;
+        private DataToServerJDO DataToServer;
 
         private string ErrorMessageBoxTitle = "";
         private string Error = "";
@@ -22,11 +23,12 @@ namespace StationTireInspection.Forms
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public StationSettings(SettingsJDO settings)
+        public StationSettings(SettingsJDO settings, DataToServerJDO dataToServer)
         {
             InitializeComponent();
 
             Settings = settings;
+            DataToServer = dataToServer;
 
             SetInitValue();
 
@@ -73,6 +75,7 @@ namespace StationTireInspection.Forms
             if(tbName.Text != null && tbName.Text != "")
             {
                 Settings.StationSettings.StationName = tbName.Text;
+                DataToServer.StationInformation.StationName = tbName.Text;
             }
             else
             {
@@ -80,7 +83,8 @@ namespace StationTireInspection.Forms
                 return;
             }
 
-            Settings.StationSettings.StationID = cbStaionID.SelectedIndex;
+            Settings.StationSettings.StationID = cbStaionID.SelectedIndex + 1;
+            DataToServer.StationInformation.StationID = cbStaionID.SelectedIndex + 1;
 
             CustomMessageBox.ShowPopup(MessageMessageBoxTitle, Message);
         }

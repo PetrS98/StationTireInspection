@@ -27,19 +27,33 @@ namespace StationTireInspection.Forms
         ChangePassword ChangePassword;
         DataToServerJDO DataToServer;
 
-        private int NonOperation = 0;
-
         string ErrorTitle = "";
         string[] Errors = new string[3];
 
         string MessageTitle = "";
         string[] Messages = new string[2];
 
-        public event EventHandler<Result> LoginResultChanged;
+        private int _NonOperation;
 
-        private Result loginResult;
+        public event EventHandler<LoginResult> LoginResultChanged;
+        public event EventHandler<int> NonOperationChanged;
 
-        public Result LoginResult
+        private int nonOperation;
+
+        public int NonOperation
+        {
+            get { return nonOperation; }
+            set
+            {
+                NonOperationChanged?.Invoke(this, value);
+
+                nonOperation = value;
+            }
+        }
+
+        private LoginResult loginResult;
+
+        public LoginResult LoginResult
         {
             get { return loginResult; }
             set
@@ -189,12 +203,12 @@ namespace StationTireInspection.Forms
             tbPassword.Text = "";
         }
 
-        private Result LoginCMD()
+        private LoginResult LoginCMD()
         {
             if (TextBoxHelper.TbInputIsNumber(tbUserName) == false)
             {
                 CustomMessageBox.ShowPopup(ErrorTitle, Errors[0]);
-                return Result.Error;
+                return LoginResult.Error;
             }
 
             UserInformations UserInformations = MySQLDatabase.ReadUserInformation(Settings.DatabaseSettings.TableName, int.Parse(tbUserName.Text));
@@ -202,7 +216,7 @@ namespace StationTireInspection.Forms
             if (UserInformations == null)
             {
                 CustomMessageBox.ShowPopup(ErrorTitle, Errors[1]);
-                return Result.Error;
+                return LoginResult.Error;
             }
 
             if(UserInformations.AskPasswordChanged == 0)
@@ -211,9 +225,13 @@ namespace StationTireInspection.Forms
                 {
                     EnableControls(false);
 
+                    DataToServer.UserInformation.FirstName = UserInformations.NameAndID.FirstName;
+                    DataToServer.UserInformation.LastName = UserInformations.NameAndID.LastName;
+                    DataToServer.UserInformation.PersonalID = UserInformations.NameAndID.ID;
+
                     CustomMessageBox.ShowPopup(MessageTitle, Messages[0]);
 
-                    return Result.Logged;
+                    return LoginResult.Logged;
                 }
             }
             else
@@ -226,13 +244,13 @@ namespace StationTireInspection.Forms
 
                     CustomMessageBox.ShowPopup(MessageTitle, Messages[1]);
 
-                    return Result.ChangePassword;
+                    return LoginResult.ChangePassword;
                 }
             }
 
             CustomMessageBox.ShowPopup(ErrorTitle, Errors[2]);
             tbPassword.Text = "";
-            return Result.Error;
+            return LoginResult.Error;
         }
 
         private bool CheckPassword(string UserInputPassword, string PasswordFromDB)
@@ -254,27 +272,34 @@ namespace StationTireInspection.Forms
         {
             ClearInputs();
 
-            LoginResult = Result.NoLogged;
+            DataToServer.UserInformation.FirstName = "First Name";
+            DataToServer.UserInformation.LastName = "Last Name";
+            DataToServer.UserInformation.PersonalID = 40180000;
+
+            LoginResult = LoginResult.NoLogged;
             EnableControls(true);
         }
 
         private void btnNonOperation_Click(object sender, EventArgs e)
         {
             ActiveButton = sender as Button;
-            NonOperation = nonOperationsButtons[ActiveButton];
+            _NonOperation = nonOperationsButtons[ActiveButton];
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            NonOperation = 0;
+            _NonOperation = 0;
             ActiveButton = null;
             ActiveTextBox = null;
+            NonOperation = 0;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            ActiveTextBox = nonOperationsTextBoxes[NonOperation];
-            DataToServer.NonOperation = NonOperation;
+            if (_NonOperation == 0 || _NonOperation > 6) return;
+
+            ActiveTextBox = nonOperationsTextBoxes[_NonOperation];
+            NonOperation = _NonOperation;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -59,9 +60,9 @@ namespace StationTireInspection
         public Form ActivePage
         {
             get { return activePage; }
-            set 
-            { 
-                if(activePage != null)
+            set
+            {
+                if (activePage != null)
                 {
                     activePage.Hide();
                 }
@@ -71,6 +72,8 @@ namespace StationTireInspection
                 activePage.Show();
             }
         }
+
+        private Dictionary<Button, Form> pages = new Dictionary<Button, Form>();
 
         public MainMenu()
         {
@@ -90,7 +93,7 @@ namespace StationTireInspection
             diagnostics = new CommDiagnostics(mySQLDatabase, readerTCPClient, serverTCPClient, DataToServer);
             databaseSettings = new DatabaseSettings(Settings, mySQLDatabase);
             aboutApp = new AboutApp();           
-            stationSettings = new StationSettings(Settings);
+            stationSettings = new StationSettings(Settings, DataToServer);
             mainAppConnectionSettings = new MainAppConnectionSettings(Settings, serverTCPClient);
 
             login.LoginResultChanged += LoginChanged;
@@ -110,6 +113,15 @@ namespace StationTireInspection
             ActiveButton = btnAboutApp;
             ActivePage = aboutApp;
 
+            pages.Add(btnLogin, login);
+            pages.Add(btnChangePassword, changePassword);
+            pages.Add(btnDiagnostics, diagnostics);
+            pages.Add(btnDatabaseSettings, databaseSettings);
+            pages.Add(btnStationSettings, stationSettings);
+            pages.Add(btnReaderSettings, barcodeReaderSettings);
+            pages.Add(btnMainAppSettings, mainAppConnectionSettings);
+            pages.Add(btnAboutApp, aboutApp);
+
             //mySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
             mySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
 
@@ -120,6 +132,11 @@ namespace StationTireInspection
             serverTCPClient.IPAddress = Settings.MainAppConnectionSettings.IPAddress;
             serverTCPClient.Port = Settings.MainAppConnectionSettings.Port;
             //serverTCPClient.Connect();
+
+            DataToServer.StationInformation.StationName = Settings.StationSettings.StationName;
+            DataToServer.StationInformation.StationID = Settings.StationSettings.StationID;
+            DataToServer.NonOperation = 0;
+            DataToServer.UserInformation.Status = LoginResult.NoLogged;
         }
 
         private void AddPage(Form form)
@@ -129,17 +146,12 @@ namespace StationTireInspection
             pagePanel.Controls.Add(form);
         }
 
-        private void LoginChanged(object sender, Result e)
+        private void LoginChanged(object sender, LoginResult e)
         {
-            if(e == Result.ChangePassword)
+            if(e == LoginResult.ChangePassword)
             {
                 ActiveButton = btnChangePassword;
                 ActivePage = changePassword;
-            }
-
-            if(e == Result.Logged)
-            {
-
             }
         }
 
@@ -225,54 +237,6 @@ namespace StationTireInspection
             }
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = login;
-        }
-
-        private void btnChangePassword_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = changePassword;
-        }
-
-        private void btnDiagnostics_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = diagnostics;
-        }
-
-        private void btnDatabaseSettings_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = databaseSettings;
-        }
-
-        private void btnAboutApp_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = aboutApp;
-        }
-
-        private void btnReaderSettings_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = barcodeReaderSettings;
-        }
-
-        private void btnStationSettings_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = stationSettings;
-        }
-
-        private void btnMainAppSettings_Click(object sender, EventArgs e)
-        {
-            ActiveButton = sender as Button;
-            ActivePage = mainAppConnectionSettings;
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -301,6 +265,12 @@ namespace StationTireInspection
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             WriteSettingsJSON(SETTING_FILE_PATH, ENCRIPTION_KEY);
+        }
+
+        private void pagesBtn_Click(object sender, EventArgs e)
+        {
+            ActiveButton = sender as Button;
+            ActivePage = pages[ActiveButton];
         }
     }
 }

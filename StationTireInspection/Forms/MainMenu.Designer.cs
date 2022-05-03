@@ -43,6 +43,7 @@ namespace StationTireInspection
             this.btnMainAppSettings = new System.Windows.Forms.Button();
             this.btnReaderSettings = new System.Windows.Forms.Button();
             this.p2 = new System.Windows.Forms.Panel();
+            this.pbLoged = new System.Windows.Forms.PictureBox();
             this.p1 = new System.Windows.Forms.Panel();
             this.pagePanel = new System.Windows.Forms.Panel();
             this.pMain = new System.Windows.Forms.Panel();
@@ -51,18 +52,17 @@ namespace StationTireInspection
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbIcon = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.pbLoged = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLanguage)).BeginInit();
             this.p0.SuspendLayout();
             this.p3.SuspendLayout();
             this.p2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoged)).BeginInit();
             this.p1.SuspendLayout();
             this.pMain.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoged)).BeginInit();
             this.SuspendLayout();
             // 
             // pbLogo
@@ -91,7 +91,7 @@ namespace StationTireInspection
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Login to VII";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.pagesBtn_Click);
             // 
             // btnChangePassword
             // 
@@ -109,7 +109,7 @@ namespace StationTireInspection
             this.btnChangePassword.TabIndex = 2;
             this.btnChangePassword.Text = "Change Password";
             this.btnChangePassword.UseVisualStyleBackColor = false;
-            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
+            this.btnChangePassword.Click += new System.EventHandler(this.pagesBtn_Click);
             // 
             // btnDiagnostics
             // 
@@ -127,7 +127,7 @@ namespace StationTireInspection
             this.btnDiagnostics.TabIndex = 3;
             this.btnDiagnostics.Text = "Diagnostics";
             this.btnDiagnostics.UseVisualStyleBackColor = false;
-            this.btnDiagnostics.Click += new System.EventHandler(this.btnDiagnostics_Click);
+            this.btnDiagnostics.Click += new System.EventHandler(this.pagesBtn_Click);
             // 
             // pbLanguage
             // 
@@ -156,7 +156,7 @@ namespace StationTireInspection
             this.btnDatabaseSettings.TabIndex = 5;
             this.btnDatabaseSettings.Text = "Database Settings";
             this.btnDatabaseSettings.UseVisualStyleBackColor = false;
-            this.btnDatabaseSettings.Click += new System.EventHandler(this.btnDatabaseSettings_Click);
+            this.btnDatabaseSettings.Click += new System.EventHandler(this.pagesBtn_Click);
             // 
             // p0
             // 
@@ -203,7 +203,7 @@ namespace StationTireInspection
             this.btnAboutApp.TabIndex = 6;
             this.btnAboutApp.Text = "About App";
             this.btnAboutApp.UseVisualStyleBackColor = false;
-            this.btnAboutApp.Click += new System.EventHandler(this.btnAboutApp_Click);
+            this.btnAboutApp.Click += new System.EventHandler(this.pagesBtn_Click);
             // 
             // btnStationSettings
             // 
@@ -221,7 +221,7 @@ namespace StationTireInspection
             this.btnStationSettings.TabIndex = 8;
             this.btnStationSettings.Text = "Station Settings";
             this.btnStationSettings.UseVisualStyleBackColor = false;
-            this.btnStationSettings.Click += new System.EventHandler(this.btnStationSettings_Click);
+            this.btnStationSettings.Click += new System.EventHandler(this.pagesBtn_Click);
             // 
             // btnMainAppSettings
             // 
@@ -239,7 +239,7 @@ namespace StationTireInspection
             this.btnMainAppSettings.TabIndex = 10;
             this.btnMainAppSettings.Text = "Main App Settings";
             this.btnMainAppSettings.UseVisualStyleBackColor = false;
-            this.btnMainAppSettings.Click += new System.EventHandler(this.btnMainAppSettings_Click);
+            this.btnMainAppSettings.Click += new System.EventHandler(this.pagesBtn_Click);
             // 
             // btnReaderSettings
             // 
@@ -257,7 +257,7 @@ namespace StationTireInspection
             this.btnReaderSettings.TabIndex = 7;
             this.btnReaderSettings.Text = "Barcode Reader Settings";
             this.btnReaderSettings.UseVisualStyleBackColor = false;
-            this.btnReaderSettings.Click += new System.EventHandler(this.btnReaderSettings_Click);
+            this.btnReaderSettings.Click += new System.EventHandler(this.pagesBtn_Click);
             // 
             // p2
             // 
@@ -269,6 +269,17 @@ namespace StationTireInspection
             this.p2.Name = "p2";
             this.p2.Size = new System.Drawing.Size(295, 82);
             this.p2.TabIndex = 7;
+            // 
+            // pbLoged
+            // 
+            this.pbLoged.Image = global::StationTireInspection.Properties.Resources.login;
+            this.pbLoged.Location = new System.Drawing.Point(162, 22);
+            this.pbLoged.Name = "pbLoged";
+            this.pbLoged.Size = new System.Drawing.Size(99, 40);
+            this.pbLoged.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLoged.TabIndex = 5;
+            this.pbLoged.TabStop = false;
+            this.pbLoged.Click += new System.EventHandler(this.pbLoged_Click);
             // 
             // p1
             // 
@@ -369,17 +380,6 @@ namespace StationTireInspection
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // pbLoged
-            // 
-            this.pbLoged.Image = global::StationTireInspection.Properties.Resources.login;
-            this.pbLoged.Location = new System.Drawing.Point(162, 22);
-            this.pbLoged.Name = "pbLoged";
-            this.pbLoged.Size = new System.Drawing.Size(99, 40);
-            this.pbLoged.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLoged.TabIndex = 5;
-            this.pbLoged.TabStop = false;
-            this.pbLoged.Click += new System.EventHandler(this.pbLoged_Click);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -401,12 +401,12 @@ namespace StationTireInspection
             this.p0.ResumeLayout(false);
             this.p3.ResumeLayout(false);
             this.p2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoged)).EndInit();
             this.p1.ResumeLayout(false);
             this.pMain.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoged)).EndInit();
             this.ResumeLayout(false);
 
         }

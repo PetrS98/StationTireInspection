@@ -24,9 +24,18 @@ namespace StationTireInspection.Classes
 
             ReaderTCPClient.DataChanged += BarcodeRead;
             Login.LoginResultChanged += LoginChanged;
+            Login.NonOperationChanged += NonOpChanged;
+
         }
 
-        private void LoginChanged(object sender, Result e)
+        private void NonOpChanged(object sender, int e)
+        {
+            DataToServer.NonOperation = e;
+
+            SendDataToServer(DataToServer);
+        }
+
+        private void LoginChanged(object sender, LoginResult e)
         {
             DataToServer.UserInformation.Status = e;
 
