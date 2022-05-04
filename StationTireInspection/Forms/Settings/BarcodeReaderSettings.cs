@@ -120,7 +120,9 @@ namespace StationTireInspection.Forms
         {
             ReaderTCPClient.IPAddress = Settings.BarcodeReaderSettings.IPAddress;
             ReaderTCPClient.Port = Settings.BarcodeReaderSettings.Port;
-            ReaderTCPClient.Connect();
+            ReaderTCPClient.Connect_Async();
+
+            //ReaderTCPClient.Connect();
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)

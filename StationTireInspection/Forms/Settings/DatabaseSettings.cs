@@ -162,7 +162,9 @@ namespace StationTireInspection.Forms
         private void btnConnect_Click(object sender, EventArgs e)
         {
             if (MySQLDatabase.Equals(ClientStatus.Disconnected)) return;
-            MySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
+            MySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
+
+            //MySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)

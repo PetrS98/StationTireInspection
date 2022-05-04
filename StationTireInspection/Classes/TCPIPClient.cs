@@ -21,6 +21,7 @@ namespace StationTireInspection.Classes
 
         public event EventHandler<ClientStatus> StatusChanged;
         public event EventHandler<byte[]> DataChanged;
+        public event EventHandler<Exception> ExceptionChanged;
 
         private ClientStatus status = ClientStatus.Disconnected;
         public ClientStatus Status
@@ -71,7 +72,14 @@ namespace StationTireInspection.Classes
 
             Reconnecting = true;
             Disconnect(false);
-            Connect();
+            Connect_Async();
+
+            //Connect();
+        }
+
+        async public void Connect_Async()
+        {
+            await Task.Run(() => Connect());
         }
 
         public bool Connect()
@@ -97,7 +105,9 @@ namespace StationTireInspection.Classes
             catch(Exception ex)
             {
                 if (Reconnecting == false)
-                    CustomMessageBox.ShowPopup("TCPIP Client Error", ex.Message);
+                    ExceptionChanged(this, ex);
+
+                    //CustomMessageBox.ShowPopup("TCPIP Client Error", ex.Message);
                 return false;
             } 
         }
@@ -125,7 +135,9 @@ namespace StationTireInspection.Classes
                 }
                 catch (Exception ex)
                 {
-                    CustomMessageBox.ShowPopup("TCPIP Client Error", ex.Message);
+                    ExceptionChanged(this, ex);
+
+                    //CustomMessageBox.ShowPopup("TCPIP Client Error", ex.Message);
                 }
             }
         }

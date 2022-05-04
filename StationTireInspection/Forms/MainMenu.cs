@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using StationTireInspection.Classes;
 using StationTireInspection.Forms;
+using StationTireInspection.Forms.MessageBoxes;
 using StationTireInspection.Forms.Settings;
 using StationTireInspection.JDO.DataToServer;
 using StationTireInspection.UDT;
@@ -122,21 +123,45 @@ namespace StationTireInspection
             pages.Add(btnMainAppSettings, mainAppConnectionSettings);
             pages.Add(btnAboutApp, aboutApp);
 
-            //mySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
-            mySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
+            mySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
+            //mySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
 
             readerTCPClient.IPAddress = Settings.BarcodeReaderSettings.IPAddress;
             readerTCPClient.Port = Settings.BarcodeReaderSettings.Port;
+            readerTCPClient.Connect_Async();
+
             //readerTCPClient.Connect();
 
             serverTCPClient.IPAddress = Settings.MainAppConnectionSettings.IPAddress;
             serverTCPClient.Port = Settings.MainAppConnectionSettings.Port;
+            serverTCPClient.Connect_Async();
+
             //serverTCPClient.Connect();
 
             DataToServer.StationInformation.StationName = Settings.StationSettings.StationName;
             DataToServer.StationInformation.StationID = Settings.StationSettings.StationID;
             DataToServer.NonOperation = 0;
             DataToServer.UserInformation.Status = LoginResult.NoLogged;
+
+            mySQLDatabase.ExceptionChanged += MySqlExceptionChanged_ShowPopUp;
+            readerTCPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
+            serverTCPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
+        }
+
+        private void TCPClientExceptionChanged_ShowPopUp(object sender, Exception e)
+        {
+            Invoke((MethodInvoker)delegate ()
+            {
+                CustomMessageBox.ShowPopup("TCPIP Client Error", e.Message);
+            });
+        }
+
+        private void MySqlExceptionChanged_ShowPopUp(object sender, Exception e)
+        {
+            Invoke((MethodInvoker)delegate ()
+            {
+                CustomMessageBox.ShowPopup("MySQL Error", e.Message);
+            });
         }
 
         private void AddPage(Form form)

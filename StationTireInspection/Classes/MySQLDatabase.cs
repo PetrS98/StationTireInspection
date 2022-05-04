@@ -28,6 +28,7 @@ namespace StationTireInspection.Classes
         }
 
         public event EventHandler<ClientStatus> StatusChanged;
+        public event EventHandler<Exception> ExceptionChanged;
 
         public MySQLDatabase()
         {
@@ -51,7 +52,8 @@ namespace StationTireInspection.Classes
             }
             catch(Exception ex)
             {
-                CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                ExceptionChanged(this, ex);
                 return false;
             }
         }
@@ -90,7 +92,8 @@ namespace StationTireInspection.Classes
             }
             catch(Exception ex)
             {
-                CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                ExceptionChanged(this, ex);
                 return null;
             }
         }
@@ -114,7 +117,8 @@ namespace StationTireInspection.Classes
             }
             catch (Exception ex)
             {
-                CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                ExceptionChanged(this, ex);
                 return null;
             }
         }
@@ -136,7 +140,8 @@ namespace StationTireInspection.Classes
             }
             catch (Exception ex)
             {
-                CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                ExceptionChanged(this, ex);
                 return false;
             }
 

@@ -120,7 +120,9 @@ namespace StationTireInspection.Forms.Settings
         {
             ServerTCPClient.IPAddress = Settings.MainAppConnectionSettings.IPAddress;
             ServerTCPClient.Port = Settings.MainAppConnectionSettings.Port;
-            ServerTCPClient.Connect();
+            ServerTCPClient.Connect_Async();
+
+            //ServerTCPClient.Connect();
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
