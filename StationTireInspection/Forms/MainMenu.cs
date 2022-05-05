@@ -27,6 +27,7 @@ namespace StationTireInspection
 
         private TCPIPClient readerTCPClient;
         private TCPIPClient serverTCPClient;
+        private TCPIPClient interfacTCPIPClient;
         private Login login;
         private ChangePassword changePassword;
         private CommDiagnostics diagnostics;
@@ -36,6 +37,7 @@ namespace StationTireInspection
         private StationSettings stationSettings;
         private MainAppConnectionSettings mainAppConnectionSettings;
         private ServerClient serverClient;
+        private PLCStationInterfaceSettings pLCStationInterfaceSettings;
 
         private bool mouseDown;
         private Point lastLocation;
@@ -87,13 +89,15 @@ namespace StationTireInspection
             
             readerTCPClient = new TCPIPClient();
             serverTCPClient = new TCPIPClient();
+            interfacTCPIPClient = new TCPIPClient();
             changePassword = new ChangePassword(mySQLDatabase, Settings);
             login = new Login(mySQLDatabase, Settings, changePassword, DataToServer);
             serverClient = new ServerClient(readerTCPClient, serverTCPClient, DataToServer, login);
             barcodeReaderSettings = new BarcodeReaderSettings(Settings, readerTCPClient);
             diagnostics = new CommDiagnostics(mySQLDatabase, readerTCPClient, serverTCPClient, DataToServer);
             databaseSettings = new DatabaseSettings(Settings, mySQLDatabase);
-            aboutApp = new AboutApp();           
+            aboutApp = new AboutApp();
+            pLCStationInterfaceSettings = new PLCStationInterfaceSettings(Settings, interfacTCPIPClient);
             stationSettings = new StationSettings(Settings, DataToServer);
             mainAppConnectionSettings = new MainAppConnectionSettings(Settings, serverTCPClient);
 
@@ -105,6 +109,7 @@ namespace StationTireInspection
             AddPage(databaseSettings);
             AddPage(stationSettings);
             AddPage(barcodeReaderSettings);
+            AddPage(pLCStationInterfaceSettings);
             AddPage(mainAppConnectionSettings);
             AddPage(aboutApp);
 
@@ -120,6 +125,7 @@ namespace StationTireInspection
             pages.Add(btnDatabaseSettings, databaseSettings);
             pages.Add(btnStationSettings, stationSettings);
             pages.Add(btnReaderSettings, barcodeReaderSettings);
+            pages.Add(btnPLCStationInterfaceSettings, pLCStationInterfaceSettings);
             pages.Add(btnMainAppSettings, mainAppConnectionSettings);
             pages.Add(btnAboutApp, aboutApp);
 
@@ -192,6 +198,7 @@ namespace StationTireInspection
                 btnDatabaseSettings.Text = "Nastavení Databáze";
                 btnReaderSettings.Text = "Nastavení Čtečky Barkódů";
                 btnMainAppSettings.Text = "Nastavení Hlavní Aplikace";
+                btnPLCStationInterfaceSettings.Text = "Nastavení PLC <--> Station Interfacu";
                 btnStationSettings.Text = "Nastavení Stanice";
                 btnAboutApp.Text = "O Aplikaci";
             }
@@ -205,6 +212,7 @@ namespace StationTireInspection
                 btnDatabaseSettings.Text = "Database Settings";
                 btnReaderSettings.Text = "Barcode Reader Settings";
                 btnMainAppSettings.Text = "Main App Settings";
+                btnPLCStationInterfaceSettings.Text = "PLC <--> Station Interface Settings";
                 btnStationSettings.Text = "Station Settings";
                 btnAboutApp.Text = "About App";
             }

@@ -767,7 +767,7 @@ namespace StationTireInspection.Forms
             this.btnPlantShutdown.Name = "btnPlantShutdown";
             this.btnPlantShutdown.Size = new System.Drawing.Size(126, 56);
             this.btnPlantShutdown.TabIndex = 6;
-            this.btnPlantShutdown.Text = "Celozávodní\r\nOdestávka";
+            this.btnPlantShutdown.Text = "Celozávodní\r\nOdstávka";
             this.btnPlantShutdown.UseVisualStyleBackColor = false;
             this.btnPlantShutdown.Click += new System.EventHandler(this.btnNonOperation_Click);
             // 

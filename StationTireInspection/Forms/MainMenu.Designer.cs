@@ -38,7 +38,7 @@ namespace StationTireInspection
             this.btnDatabaseSettings = new System.Windows.Forms.Button();
             this.p0 = new System.Windows.Forms.Panel();
             this.p3 = new System.Windows.Forms.Panel();
-            this.btnAboutApp = new System.Windows.Forms.Button();
+            this.btnPLCStationInterfaceSettings = new System.Windows.Forms.Button();
             this.btnStationSettings = new System.Windows.Forms.Button();
             this.btnMainAppSettings = new System.Windows.Forms.Button();
             this.btnReaderSettings = new System.Windows.Forms.Button();
@@ -52,6 +52,7 @@ namespace StationTireInspection
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbIcon = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnAboutApp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLanguage)).BeginInit();
             this.p0.SuspendLayout();
@@ -167,7 +168,7 @@ namespace StationTireInspection
             this.p0.Dock = System.Windows.Forms.DockStyle.Left;
             this.p0.Location = new System.Drawing.Point(0, 37);
             this.p0.Name = "p0";
-            this.p0.Size = new System.Drawing.Size(297, 723);
+            this.p0.Size = new System.Drawing.Size(297, 788);
             this.p0.TabIndex = 6;
             // 
             // p3
@@ -175,6 +176,7 @@ namespace StationTireInspection
             this.p3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.p3.Controls.Add(this.btnAboutApp);
             this.p3.Controls.Add(this.btnStationSettings);
+            this.p3.Controls.Add(this.btnPLCStationInterfaceSettings);
             this.p3.Controls.Add(this.btnMainAppSettings);
             this.p3.Controls.Add(this.btnReaderSettings);
             this.p3.Controls.Add(this.btnDatabaseSettings);
@@ -184,26 +186,26 @@ namespace StationTireInspection
             this.p3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.p3.Location = new System.Drawing.Point(0, 233);
             this.p3.Name = "p3";
-            this.p3.Size = new System.Drawing.Size(295, 488);
+            this.p3.Size = new System.Drawing.Size(295, 553);
             this.p3.TabIndex = 8;
             // 
-            // btnAboutApp
+            // btnPLCStationInterfaceSettings
             // 
-            this.btnAboutApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAboutApp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAboutApp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnAboutApp.FlatAppearance.BorderSize = 0;
-            this.btnAboutApp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
-            this.btnAboutApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAboutApp.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAboutApp.ForeColor = System.Drawing.Color.White;
-            this.btnAboutApp.Location = new System.Drawing.Point(0, 427);
-            this.btnAboutApp.Name = "btnAboutApp";
-            this.btnAboutApp.Size = new System.Drawing.Size(295, 61);
-            this.btnAboutApp.TabIndex = 6;
-            this.btnAboutApp.Text = "About App";
-            this.btnAboutApp.UseVisualStyleBackColor = false;
-            this.btnAboutApp.Click += new System.EventHandler(this.pagesBtn_Click);
+            this.btnPLCStationInterfaceSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnPLCStationInterfaceSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPLCStationInterfaceSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnPLCStationInterfaceSettings.FlatAppearance.BorderSize = 0;
+            this.btnPLCStationInterfaceSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
+            this.btnPLCStationInterfaceSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPLCStationInterfaceSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPLCStationInterfaceSettings.ForeColor = System.Drawing.Color.White;
+            this.btnPLCStationInterfaceSettings.Location = new System.Drawing.Point(0, 366);
+            this.btnPLCStationInterfaceSettings.Name = "btnPLCStationInterfaceSettings";
+            this.btnPLCStationInterfaceSettings.Size = new System.Drawing.Size(295, 61);
+            this.btnPLCStationInterfaceSettings.TabIndex = 6;
+            this.btnPLCStationInterfaceSettings.Text = "PLC <--> Station Interface Settings";
+            this.btnPLCStationInterfaceSettings.UseVisualStyleBackColor = false;
+            this.btnPLCStationInterfaceSettings.Click += new System.EventHandler(this.pagesBtn_Click);
             // 
             // btnStationSettings
             // 
@@ -215,7 +217,7 @@ namespace StationTireInspection
             this.btnStationSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStationSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnStationSettings.ForeColor = System.Drawing.Color.White;
-            this.btnStationSettings.Location = new System.Drawing.Point(0, 366);
+            this.btnStationSettings.Location = new System.Drawing.Point(0, 427);
             this.btnStationSettings.Name = "btnStationSettings";
             this.btnStationSettings.Size = new System.Drawing.Size(295, 61);
             this.btnStationSettings.TabIndex = 8;
@@ -298,7 +300,7 @@ namespace StationTireInspection
             this.pagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pagePanel.Location = new System.Drawing.Point(297, 37);
             this.pagePanel.Name = "pagePanel";
-            this.pagePanel.Size = new System.Drawing.Size(439, 723);
+            this.pagePanel.Size = new System.Drawing.Size(439, 788);
             this.pagePanel.TabIndex = 7;
             // 
             // pMain
@@ -380,12 +382,30 @@ namespace StationTireInspection
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnAboutApp
+            // 
+            this.btnAboutApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAboutApp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAboutApp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnAboutApp.FlatAppearance.BorderSize = 0;
+            this.btnAboutApp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
+            this.btnAboutApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAboutApp.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAboutApp.ForeColor = System.Drawing.Color.White;
+            this.btnAboutApp.Location = new System.Drawing.Point(0, 488);
+            this.btnAboutApp.Name = "btnAboutApp";
+            this.btnAboutApp.Size = new System.Drawing.Size(295, 61);
+            this.btnAboutApp.TabIndex = 11;
+            this.btnAboutApp.Text = "About App";
+            this.btnAboutApp.UseVisualStyleBackColor = false;
+            this.btnAboutApp.Click += new System.EventHandler(this.pagesBtn_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(736, 760);
+            this.ClientSize = new System.Drawing.Size(736, 825);
             this.Controls.Add(this.pagePanel);
             this.Controls.Add(this.p0);
             this.Controls.Add(this.pMain);
@@ -430,11 +450,12 @@ namespace StationTireInspection
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pbIcon;
-        private System.Windows.Forms.Button btnAboutApp;
+        private System.Windows.Forms.Button btnPLCStationInterfaceSettings;
         private System.Windows.Forms.Button btnStationSettings;
         private System.Windows.Forms.Button btnReaderSettings;
         private System.Windows.Forms.Button btnMainAppSettings;
         private System.Windows.Forms.PictureBox pbLoged;
+        private System.Windows.Forms.Button btnAboutApp;
     }
 }
 

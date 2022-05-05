@@ -298,12 +298,12 @@ namespace StationTireInspection.Forms
         {
             if (NonOperation == 0) return;
 
+            SetStopNonOPInfosAndSendToDB();
+
             _NonOperation = 0;
             ActiveButton = null;
             ActiveTextBox = null;
             NonOperation = 0;
-
-            SetStopNonOPInfosAndSendToDB();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
