@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using MySqlConnector;
 using StationTireInspection.Forms.MessageBoxes;
+using StationTireInspection.UDT;
 using VisualInspection.Utils.Net;
 
 namespace StationTireInspection.Classes
@@ -133,6 +134,36 @@ namespace StationTireInspection.Classes
             mySqlCommand.Parameters.AddWithValue("@PersonalID", PersonalID);
             mySqlCommand.Parameters.AddWithValue("@Password", Password);
             mySqlCommand.Parameters.AddWithValue("@AskPasswordChanged", AskPasswordChanged);
+
+            try
+            {
+                mySqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
+                ExceptionChanged(this, ex);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool WriteNonOperationToDB(string TableName, NonOperationInformations NonOperationInformations)
+        {
+            using MySqlCommand mySqlCommand = new MySqlCommand();
+
+            mySqlCommand.Connection = mySqlConnection;
+            mySqlCommand.CommandText = @"INSERT INTO " + TableName + " (datetime_start_non_op, datetime_stop_non_op, non_operation_time, id_non_operation, id_user_select_non_op, id_user_clear_non_op, id_station) " +
+                                                              "VALUES (@StartNonOPDateTime, @StopNonOPDateTime, @NonOperationTime, @IDNonOperation, @IDUserSelectNonOp, @IDUserClearNonOp, @IDStation)";
+
+            mySqlCommand.Parameters.AddWithValue("@StartNonOPDateTime", NonOperationInformations.StartNonOPDateTime);
+            mySqlCommand.Parameters.AddWithValue("@StopNonOPDateTime", NonOperationInformations.StopNonOPDateTime);
+            mySqlCommand.Parameters.AddWithValue("@NonOperationTime", NonOperationInformations.NonOperationTime);
+            mySqlCommand.Parameters.AddWithValue("@IDNonOperation", NonOperationInformations.IDNonOperation);
+            mySqlCommand.Parameters.AddWithValue("@IDUserSelectNonOp", NonOperationInformations.IDUserSelectNonOp);
+            mySqlCommand.Parameters.AddWithValue("@IDUserClearNonOp", NonOperationInformations.IDUserClearNonOp);
+            mySqlCommand.Parameters.AddWithValue("@IDStation", NonOperationInformations.IDStation);
 
             try
             {

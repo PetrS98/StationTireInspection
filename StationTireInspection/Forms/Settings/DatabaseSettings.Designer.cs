@@ -39,13 +39,15 @@ namespace StationTireInspection.Forms
             this.ipAddressBox = new VisualInspection.App.UserControls.IPAddressBox();
             this.lblDatabaseName = new System.Windows.Forms.Label();
             this.tbDatabaseName = new System.Windows.Forms.TextBox();
-            this.lblTableName = new System.Windows.Forms.Label();
-            this.tbTableName = new System.Windows.Forms.TextBox();
+            this.lblUsersTableName = new System.Windows.Forms.Label();
+            this.tbUsersTableName = new System.Windows.Forms.TextBox();
             this.lblDatabaseUserName = new System.Windows.Forms.Label();
             this.tbDatabaseUserName = new System.Windows.Forms.TextBox();
             this.lblDatabasePassword = new System.Windows.Forms.Label();
             this.tbDatabasePassword = new System.Windows.Forms.TextBox();
             this.btnApply = new System.Windows.Forms.Button();
+            this.lblNonOPsDataTableName = new System.Windows.Forms.Label();
+            this.tbNonOPsDataTableName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,32 +66,37 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(439, 792);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(439, 820);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 16);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 19);
             this.tableLayoutPanel1.Controls.Add(this.lblTitle, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblIPAddress, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.ipAddressBox, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblDatabaseName, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.tbDatabaseName, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblTableName, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.tbTableName, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.lblDatabaseUserName, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.tbDatabaseUserName, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.lblDatabasePassword, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.tbDatabasePassword, 0, 14);
-            this.tableLayoutPanel1.Controls.Add(this.btnApply, 0, 19);
+            this.tableLayoutPanel1.Controls.Add(this.lblUsersTableName, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.tbUsersTableName, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.lblDatabaseUserName, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.tbDatabaseUserName, 0, 14);
+            this.tableLayoutPanel1.Controls.Add(this.lblDatabasePassword, 0, 16);
+            this.tableLayoutPanel1.Controls.Add(this.tbDatabasePassword, 0, 17);
+            this.tableLayoutPanel1.Controls.Add(this.btnApply, 0, 22);
+            this.tableLayoutPanel1.Controls.Add(this.lblNonOPsDataTableName, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.tbNonOPsDataTableName, 0, 11);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(76, 23);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 22;
+            this.tableLayoutPanel1.RowCount = 25;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
@@ -109,7 +116,10 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(286, 717);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(286, 788);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -118,7 +128,7 @@ namespace StationTireInspection.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.btnConnect);
             this.panel1.Controls.Add(this.btnDisconnect);
-            this.panel1.Location = new System.Drawing.Point(3, 438);
+            this.panel1.Location = new System.Drawing.Point(3, 519);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(280, 43);
             this.panel1.TabIndex = 3;
@@ -226,29 +236,29 @@ namespace StationTireInspection.Forms
             this.tbDatabaseName.TabIndex = 4;
             this.tbDatabaseName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // lblTableName
+            // lblUsersTableName
             // 
-            this.lblTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTableName.AutoSize = true;
-            this.lblTableName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTableName.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTableName.Location = new System.Drawing.Point(3, 199);
-            this.lblTableName.Name = "lblTableName";
-            this.lblTableName.Size = new System.Drawing.Size(115, 25);
-            this.lblTableName.TabIndex = 5;
-            this.lblTableName.Text = "Table Name:";
+            this.lblUsersTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblUsersTableName.AutoSize = true;
+            this.lblUsersTableName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblUsersTableName.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblUsersTableName.Location = new System.Drawing.Point(3, 199);
+            this.lblUsersTableName.Name = "lblUsersTableName";
+            this.lblUsersTableName.Size = new System.Drawing.Size(166, 25);
+            this.lblUsersTableName.TabIndex = 5;
+            this.lblUsersTableName.Text = "Users Table Name:";
             // 
-            // tbTableName
+            // tbUsersTableName
             // 
-            this.tbTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbUsersTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbTableName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbTableName.Location = new System.Drawing.Point(3, 227);
-            this.tbTableName.Name = "tbTableName";
-            this.tbTableName.Size = new System.Drawing.Size(280, 29);
-            this.tbTableName.TabIndex = 6;
-            this.tbTableName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbUsersTableName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbUsersTableName.Location = new System.Drawing.Point(3, 227);
+            this.tbUsersTableName.Name = "tbUsersTableName";
+            this.tbUsersTableName.Size = new System.Drawing.Size(280, 29);
+            this.tbUsersTableName.TabIndex = 6;
+            this.tbUsersTableName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblDatabaseUserName
             // 
@@ -256,7 +266,7 @@ namespace StationTireInspection.Forms
             this.lblDatabaseUserName.AutoSize = true;
             this.lblDatabaseUserName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDatabaseUserName.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblDatabaseUserName.Location = new System.Drawing.Point(3, 280);
+            this.lblDatabaseUserName.Location = new System.Drawing.Point(3, 361);
             this.lblDatabaseUserName.Name = "lblDatabaseUserName";
             this.lblDatabaseUserName.Size = new System.Drawing.Size(192, 25);
             this.lblDatabaseUserName.TabIndex = 7;
@@ -268,7 +278,7 @@ namespace StationTireInspection.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDatabaseUserName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbDatabaseUserName.Location = new System.Drawing.Point(3, 308);
+            this.tbDatabaseUserName.Location = new System.Drawing.Point(3, 389);
             this.tbDatabaseUserName.Name = "tbDatabaseUserName";
             this.tbDatabaseUserName.Size = new System.Drawing.Size(280, 29);
             this.tbDatabaseUserName.TabIndex = 8;
@@ -280,7 +290,7 @@ namespace StationTireInspection.Forms
             this.lblDatabasePassword.AutoSize = true;
             this.lblDatabasePassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDatabasePassword.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblDatabasePassword.Location = new System.Drawing.Point(3, 360);
+            this.lblDatabasePassword.Location = new System.Drawing.Point(3, 441);
             this.lblDatabasePassword.Name = "lblDatabasePassword";
             this.lblDatabasePassword.Size = new System.Drawing.Size(178, 25);
             this.lblDatabasePassword.TabIndex = 9;
@@ -292,7 +302,7 @@ namespace StationTireInspection.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDatabasePassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbDatabasePassword.Location = new System.Drawing.Point(3, 388);
+            this.tbDatabasePassword.Location = new System.Drawing.Point(3, 469);
             this.tbDatabasePassword.Name = "tbDatabasePassword";
             this.tbDatabasePassword.PasswordChar = '*';
             this.tbDatabasePassword.Size = new System.Drawing.Size(280, 29);
@@ -309,13 +319,37 @@ namespace StationTireInspection.Forms
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(3, 542);
+            this.btnApply.Location = new System.Drawing.Point(3, 623);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(280, 44);
             this.btnApply.TabIndex = 11;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = false;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
+            // lblNonOPsDataTableName
+            // 
+            this.lblNonOPsDataTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblNonOPsDataTableName.AutoSize = true;
+            this.lblNonOPsDataTableName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNonOPsDataTableName.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblNonOPsDataTableName.Location = new System.Drawing.Point(3, 280);
+            this.lblNonOPsDataTableName.Name = "lblNonOPsDataTableName";
+            this.lblNonOPsDataTableName.Size = new System.Drawing.Size(233, 25);
+            this.lblNonOPsDataTableName.TabIndex = 13;
+            this.lblNonOPsDataTableName.Text = "NonOPs Data Table Name:";
+            // 
+            // tbNonOPsDataTableName
+            // 
+            this.tbNonOPsDataTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNonOPsDataTableName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbNonOPsDataTableName.Location = new System.Drawing.Point(3, 308);
+            this.tbNonOPsDataTableName.Name = "tbNonOPsDataTableName";
+            this.tbNonOPsDataTableName.Size = new System.Drawing.Size(280, 29);
+            this.tbNonOPsDataTableName.TabIndex = 15;
+            this.tbNonOPsDataTableName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DatabaseSettings
             // 
@@ -345,8 +379,8 @@ namespace StationTireInspection.Forms
         private VisualInspection.App.UserControls.IPAddressBox ipAddressBox;
         private System.Windows.Forms.Label lblDatabaseName;
         private System.Windows.Forms.TextBox tbDatabaseName;
-        private System.Windows.Forms.Label lblTableName;
-        private System.Windows.Forms.TextBox tbTableName;
+        private System.Windows.Forms.Label lblUsersTableName;
+        private System.Windows.Forms.TextBox tbUsersTableName;
         private System.Windows.Forms.Label lblDatabaseUserName;
         private System.Windows.Forms.TextBox tbDatabaseUserName;
         private System.Windows.Forms.Label lblDatabasePassword;
@@ -355,5 +389,7 @@ namespace StationTireInspection.Forms
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnDisconnect;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.Label lblNonOPsDataTableName;
+        private System.Windows.Forms.TextBox tbNonOPsDataTableName;
     }
 }

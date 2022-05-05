@@ -19,7 +19,7 @@ namespace StationTireInspection.Forms
         MySQLDatabase MySQLDatabase;
 
         private string ErrorMessageBoxTitle = "";
-        private string[] Errors = new string[5];
+        private string[] Errors = new string[7];
 
         private string MessageMessageBoxTitle = "";
         private string Message = "";
@@ -45,7 +45,8 @@ namespace StationTireInspection.Forms
                 lblTitle.Text = "Nastavení Databáze";
                 lblIPAddress.Text = "IP Adresa:";
                 lblDatabaseName.Text = "Jméno Databáze:";
-                lblTableName.Text = "Jméno Tabulky:";
+                lblUsersTableName.Text = "Jméno Tabulky s Uživateli:";
+                lblNonOPsDataTableName.Text = "Jméno Tabulky s Daty Prostojů:";
                 lblDatabaseUserName.Text = "Uživatelské Jméno k Databázi:";
                 lblDatabasePassword.Text = "Heslo k Databázi:";
                 btnConnect.Text = "Připojit";
@@ -56,9 +57,11 @@ namespace StationTireInspection.Forms
 
                 Errors[0] = "IP Adresa není ve správném tvaru. Např. 192.168.1.1";
                 Errors[1] = "Jméno databáze není ve správném tvaru nebo obsahuje nepovolené znaky. Např. Databaze_";
-                Errors[2] = "Jméno tabulky není ve správném tvaru nebo obsahuje nepovolené znaky. Např. Tabulka_";
-                Errors[3] = "Uživatelské jméno pro připojení k databázi není ve správném tvaru nebo obsahuje nepovolené znaky. Např. User1";
-                Errors[4] = "Heslo k databázi nesmí být prázdné.";
+                Errors[2] = "Jméno tabulky s uživateli není ve správném tvaru nebo obsahuje nepovolené znaky. Např. Tabulka_";
+                Errors[3] = "SPARE";
+                Errors[4] = "Jméno tabulky s daty prostojů není ve správném tvaru nebo obsahuje nepovolené znaky. Např.Tabulka_";
+                Errors[5] = "Uživatelské jméno pro připojení k databázi není ve správném tvaru nebo obsahuje nepovolené znaky. Např. User1";
+                Errors[6] = "Heslo k databázi nesmí být prázdné.";
 
                 MessageMessageBoxTitle = "Zpráva";
 
@@ -69,7 +72,8 @@ namespace StationTireInspection.Forms
                 lblTitle.Text = "Database Settings";
                 lblIPAddress.Text = "IP Address:";
                 lblDatabaseName.Text = "Database Name:";
-                lblTableName.Text = "Table Name:";
+                lblUsersTableName.Text = "Users Table Name:";
+                lblNonOPsDataTableName.Text = "NonOPs Data Table Name:";
                 lblDatabaseUserName.Text = "Database User Name:";
                 lblDatabasePassword.Text = "Database Password:";
                 btnConnect.Text = "Connect";
@@ -80,9 +84,11 @@ namespace StationTireInspection.Forms
 
                 Errors[0] = "IP Address is not in valide format. Eg. 192.168.1.1";
                 Errors[1] = "Database name is not in correct format or contains illegal characters. Eg. Database_";
-                Errors[2] = "Table name is not in correct format or contains illegal characters. Eg. Table_";
-                Errors[3] = "Database user name is not in correct format or contains illegal characters. Eg. Table_";
-                Errors[4] = "Database password must not be empty.";
+                Errors[2] = "Users Table name is not in correct format or contains illegal characters. Eg. Table_";
+                Errors[3] = "SPARE";
+                Errors[4] = "NonOPs Data Table name is not in correct format or contains illegal characters. Eg. Table_";
+                Errors[5] = "Database user name is not in correct format or contains illegal characters. Eg. Table_";
+                Errors[6] = "Database password must not be empty.";
 
                 MessageMessageBoxTitle = "Message";
 
@@ -126,13 +132,23 @@ namespace StationTireInspection.Forms
                 return;
             }
 
-            if (TextBoxHelper.TbInputIsText(tbTableName))
+            if (TextBoxHelper.TbInputIsText(tbUsersTableName))
             {
-                Settings.DatabaseSettings.TableName = tbTableName.Text;
+                Settings.DatabaseSettings.UsersTableName = tbUsersTableName.Text;
             }
             else
             {
                 CustomMessageBox.ShowPopup(ErrorMessageBoxTitle, Errors[2]);
+                return;
+            }
+
+            if (TextBoxHelper.TbInputIsText(tbNonOPsDataTableName))
+            {
+                Settings.DatabaseSettings.NonOPsDataTableName = tbNonOPsDataTableName.Text;
+            }
+            else
+            {
+                CustomMessageBox.ShowPopup(ErrorMessageBoxTitle, Errors[4]);
                 return;
             }
 
@@ -142,7 +158,7 @@ namespace StationTireInspection.Forms
             }
             else
             {
-                CustomMessageBox.ShowPopup(ErrorMessageBoxTitle, Errors[3]);
+                CustomMessageBox.ShowPopup(ErrorMessageBoxTitle, Errors[5]);
                 return;
             }
 
@@ -152,7 +168,7 @@ namespace StationTireInspection.Forms
             }
             else
             {
-                CustomMessageBox.ShowPopup(ErrorMessageBoxTitle, Errors[4]);
+                CustomMessageBox.ShowPopup(ErrorMessageBoxTitle, Errors[6]);
                 return;
             }
 
@@ -161,7 +177,7 @@ namespace StationTireInspection.Forms
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            if (MySQLDatabase.Equals(ClientStatus.Disconnected)) return;
+            if (MySQLDatabase.Status != ClientStatus.Disconnected) return;
             MySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
 
             //MySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
@@ -182,7 +198,8 @@ namespace StationTireInspection.Forms
         {
             ipAddressBox.IPAddress = Settings.DatabaseSettings.IPAddress;
             tbDatabaseName.Text = Settings.DatabaseSettings.DatabaseName;
-            tbTableName.Text = Settings.DatabaseSettings.TableName;
+            tbUsersTableName.Text = Settings.DatabaseSettings.UsersTableName;
+            tbNonOPsDataTableName.Text = Settings.DatabaseSettings.NonOPsDataTableName;
             tbDatabaseUserName.Text = Settings.DatabaseSettings.DatabaseUserName;
             tbDatabasePassword.Text = Settings.DatabaseSettings.DatabasePassword;
         }

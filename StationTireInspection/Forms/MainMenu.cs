@@ -191,6 +191,7 @@ namespace StationTireInspection
                 btnDiagnostics.Text = "Diagnostika";
                 btnDatabaseSettings.Text = "Nastavení Databáze";
                 btnReaderSettings.Text = "Nastavení Čtečky Barkódů";
+                btnMainAppSettings.Text = "Nastavení Hlavní Aplikace";
                 btnStationSettings.Text = "Nastavení Stanice";
                 btnAboutApp.Text = "O Aplikaci";
             }
@@ -203,6 +204,7 @@ namespace StationTireInspection
                 btnDiagnostics.Text = "Diagnostics";
                 btnDatabaseSettings.Text = "Database Settings";
                 btnReaderSettings.Text = "Barcode Reader Settings";
+                btnMainAppSettings.Text = "Main App Settings";
                 btnStationSettings.Text = "Station Settings";
                 btnAboutApp.Text = "About App";
             }
@@ -264,6 +266,8 @@ namespace StationTireInspection
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            login.SetStopNonOPInfosAndSendToDB();
+
             Application.Exit();
         }
 

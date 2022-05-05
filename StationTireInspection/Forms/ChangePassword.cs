@@ -147,7 +147,7 @@ namespace StationTireInspection.Forms
                 return;
             }
 
-            if (tbActualPassword.Text != MySQLDatabase.ReadUserPassword(Settings.DatabaseSettings.TableName, int.Parse(tbUserName.Text)))
+            if (tbActualPassword.Text != MySQLDatabase.ReadUserPassword(Settings.DatabaseSettings.UsersTableName, int.Parse(tbUserName.Text)))
             {
                 CustomMessageBox.ShowPopup(ErrorTitle[1], Errors[2]);
                 return;
@@ -159,7 +159,7 @@ namespace StationTireInspection.Forms
                 return;
             }
 
-            if(MySQLDatabase.UpdateUserInformations(Settings.DatabaseSettings.TableName, int.Parse(tbUserName.Text), tbNewPassword.Text, 0))
+            if(MySQLDatabase.UpdateUserInformations(Settings.DatabaseSettings.UsersTableName, int.Parse(tbUserName.Text), tbNewPassword.Text, 0))
             {
                 ClearInputs();
 

@@ -27,6 +27,8 @@ namespace StationTireInspection.Forms
         ChangePassword ChangePassword;
         DataToServerJDO DataToServer;
 
+        NonOperationInformations NonOperationInformations;
+
         string ErrorTitle = "";
         string[] Errors = new string[3];
 
@@ -34,6 +36,9 @@ namespace StationTireInspection.Forms
         string[] Messages = new string[2];
 
         private int _NonOperation;
+        private bool OnlyChangeNonOP = false;
+
+        //System.Timers.Timer NonOperationTimer = new System.Timers.Timer();
 
         public event EventHandler<LoginResult> LoginResultChanged;
         public event EventHandler<int> NonOperationChanged;
@@ -46,7 +51,6 @@ namespace StationTireInspection.Forms
             set
             {
                 NonOperationChanged?.Invoke(this, value);
-
                 nonOperation = value;
             }
         }
@@ -130,6 +134,10 @@ namespace StationTireInspection.Forms
             nonOperationsTextBoxes.Add(4, tbCVError);
             nonOperationsTextBoxes.Add(5, tbPlanedStop);
             nonOperationsTextBoxes.Add(6, tbPlantShutdown);
+
+            NonOperationInformations = new NonOperationInformations();
+
+            //NonOperationTimer.Interval = 1000;
         }
 
         private void Translate(object sender, Language e)
@@ -211,7 +219,7 @@ namespace StationTireInspection.Forms
                 return LoginResult.Error;
             }
 
-            UserInformations UserInformations = MySQLDatabase.ReadUserInformation(Settings.DatabaseSettings.TableName, int.Parse(tbUserName.Text));
+            UserInformations UserInformations = MySQLDatabase.ReadUserInformation(Settings.DatabaseSettings.UsersTableName, int.Parse(tbUserName.Text));
 
             if (UserInformations == null)
             {
@@ -288,18 +296,87 @@ namespace StationTireInspection.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if (NonOperation == 0) return;
+
             _NonOperation = 0;
             ActiveButton = null;
             ActiveTextBox = null;
             NonOperation = 0;
+
+            SetStopNonOPInfosAndSendToDB();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (_NonOperation == 0 || _NonOperation > 6) return;
+            if (_NonOperation == 0 || _NonOperation > 6 || NonOperation == _NonOperation) return;
+
+            if (NonOperation != 0) OnlyChangeNonOP = true;
 
             ActiveTextBox = nonOperationsTextBoxes[_NonOperation];
             NonOperation = _NonOperation;
+
+            if (OnlyChangeNonOP)
+            {
+                SetStopNonOPInfosAndSendToDB();
+                OnlyChangeNonOP = false;
+            }
+
+            SetStartingNonOPInfos();
+        }
+
+        public void SetStartingNonOPInfos()
+        {
+            NonOperationInformations.IDNonOperation = NonOperation;
+            NonOperationInformations.IDUserSelectNonOp = DataToServer.UserInformation.PersonalID;
+            NonOperationInformations.IDStation = Settings.StationSettings.StationID;
+            NonOperationInformations.StartNonOPDateTime = DateTime.Now;
+        }
+
+        public void SetStopNonOPInfosAndSendToDB()
+        {
+            if (NonOperation == 0) return;
+
+            NonOperationInformations.IDUserClearNonOp = DataToServer.UserInformation.PersonalID;
+            NonOperationInformations.StopNonOPDateTime = DateTime.Now;
+
+            NonOperationInformations.NonOperationTime = GetNonOperationTime(NonOperationInformations.StartNonOPDateTime, NonOperationInformations.StopNonOPDateTime);
+
+            MySQLDatabase.WriteNonOperationToDB(Settings.DatabaseSettings.NonOPsDataTableName, NonOperationInformations);
+        }
+
+        private string GetNonOperationTime(DateTime StartNonOP, DateTime StopNonOP)
+        {
+            int TimeMilisecons = TimeToMiliseconds(StopNonOP.ToLongTimeString()) - TimeToMiliseconds(StartNonOP.ToLongTimeString());
+
+            return MilisecondsToStringTime(TimeMilisecons);
+        }
+
+        private int TimeToMiliseconds(string Time)
+        {
+            string[] time = Time.Split(":");
+
+            return (int.Parse(time[0]) * 3600) + (int.Parse(time[1]) * 60) + int.Parse(time[2]);
+        }
+
+        private string MilisecondsToStringTime(int Time)
+        {
+            int _Time = Time;
+            string[] time = new string[3];
+
+            time[0] = (_Time / 3600).ToString();
+            _Time %= 3600;
+
+            time[1] = (_Time / 60).ToString();
+            _Time %= 60;
+
+            time[2] = _Time.ToString();
+
+            return BuildTimeString(time, ':');
+        }
+
+        private string BuildTimeString(string[] Time, char Separator)
+        {
+            return Time[0] + Separator + Time[1] + Separator + Time[2];
         }
     }
 }
