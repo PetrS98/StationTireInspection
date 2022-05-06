@@ -105,6 +105,7 @@ namespace StationTireInspection.Forms.Settings
             this.btnApply.TabIndex = 6;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = false;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // lblTitle
             // 
@@ -160,6 +161,7 @@ namespace StationTireInspection.Forms.Settings
             this.btnConnect.TabIndex = 3;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = false;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // btnDisconnect
             // 
@@ -177,6 +179,7 @@ namespace StationTireInspection.Forms.Settings
             this.btnDisconnect.TabIndex = 4;
             this.btnDisconnect.Text = "Disconnect";
             this.btnDisconnect.UseVisualStyleBackColor = false;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // ipAddressBox
             // 
@@ -226,6 +229,7 @@ namespace StationTireInspection.Forms.Settings
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PLCStationInterfaceSettings";
             this.Text = "PLCStationInterfaceSettings";
+            this.VisibleChanged += new System.EventHandler(this.PLCStationInterfaceSettings_VisibleChanged);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

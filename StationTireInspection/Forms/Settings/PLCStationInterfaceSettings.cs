@@ -1,4 +1,5 @@
 ﻿using StationTireInspection.Classes;
+using StationTireInspection.Forms.MessageBoxes;
 using StationTireInspection.UDT;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace StationTireInspection.Forms.Settings
     public partial class PLCStationInterfaceSettings : Form
     {
         private SettingsJDO Settings;
-        TCPIPClient InterfacTCPIPClient;
+        TCPIPClient InterfaceTCPIPClient;
 
         private string ErrorMessageBoxTitle = "";
         private string[] Errors = new string[2];
@@ -23,15 +24,17 @@ namespace StationTireInspection.Forms.Settings
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public PLCStationInterfaceSettings(SettingsJDO settings, TCPIPClient interfacTCPIPClient)
+        public PLCStationInterfaceSettings(SettingsJDO settings, TCPIPClient interfaceTCPIPClient)
         {
             InitializeComponent();
 
             Settings = settings;
-            InterfacTCPIPClient = interfacTCPIPClient;
+            InterfaceTCPIPClient = interfaceTCPIPClient;
+
+            SetInitValue();
 
             Translator.LanguageChanged += Translate;
-            InterfacTCPIPClient.StatusChanged += Status_Changed;
+            InterfaceTCPIPClient.StatusChanged += Status_Changed;
         }
 
         private void Status_Changed(object sender, ClientStatus e)
@@ -86,6 +89,56 @@ namespace StationTireInspection.Forms.Settings
 
                 Message = "Data was be correctly seved";
             }
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            if (ipAddressBox.IPAddressValid)
+            {
+                Settings.PLCStationInterfaceSettings.IPAddress = ipAddressBox.IPAddress;
+            }
+            else
+            {
+                CustomMessageBox.ShowPopup(ErrorMessageBoxTitle, Errors[0]);
+                return;
+            }
+
+            if (TextBoxHelper.TbInputIsNumber(tbPort))
+            {
+                Settings.PLCStationInterfaceSettings.Port = int.Parse(tbPort.Text);
+            }
+            else
+            {
+                CustomMessageBox.ShowPopup(ErrorMessageBoxTitle, Errors[1]);
+                return;
+            }
+
+            CustomMessageBox.ShowPopup(MessageMessageBoxTitle, Message);
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            InterfaceTCPIPClient.IPAddress = Settings.PLCStationInterfaceSettings.IPAddress;
+            InterfaceTCPIPClient.Port = Settings.PLCStationInterfaceSettings.Port;
+            InterfaceTCPIPClient.Connect_Async();
+
+            //InterfaceTCPIPClient.Connect();
+        }
+
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            InterfaceTCPIPClient.Disconnect(true);
+        }
+
+        private void SetInitValue()
+        {
+            ipAddressBox.IPAddress = Settings.PLCStationInterfaceSettings.IPAddress;
+            tbPort.Text = Settings.PLCStationInterfaceSettings.Port.ToString();
+        }
+
+        private void PLCStationInterfaceSettings_VisibleChanged(object sender, EventArgs e)
+        {
+            SetInitValue();
         }
     }
 }

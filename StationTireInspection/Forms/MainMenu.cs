@@ -94,7 +94,7 @@ namespace StationTireInspection
             login = new Login(mySQLDatabase, Settings, changePassword, DataToServer);
             serverClient = new ServerClient(readerTCPClient, serverTCPClient, DataToServer, login);
             barcodeReaderSettings = new BarcodeReaderSettings(Settings, readerTCPClient);
-            diagnostics = new CommDiagnostics(mySQLDatabase, readerTCPClient, serverTCPClient, DataToServer);
+            diagnostics = new CommDiagnostics(mySQLDatabase, readerTCPClient, serverTCPClient, DataToServer, interfacTCPIPClient);
             databaseSettings = new DatabaseSettings(Settings, mySQLDatabase);
             aboutApp = new AboutApp();
             pLCStationInterfaceSettings = new PLCStationInterfaceSettings(Settings, interfacTCPIPClient);
@@ -143,6 +143,12 @@ namespace StationTireInspection
             serverTCPClient.Connect_Async();
 
             //serverTCPClient.Connect();
+
+            interfacTCPIPClient.IPAddress = Settings.PLCStationInterfaceSettings.IPAddress;
+            interfacTCPIPClient.Port = Settings.PLCStationInterfaceSettings.Port;
+            interfacTCPIPClient.Connect_Async();
+
+            //interfacTCPIPClient.Connect();
 
             DataToServer.StationInformation.StationName = Settings.StationSettings.StationName;
             DataToServer.StationInformation.StationID = Settings.StationSettings.StationID;

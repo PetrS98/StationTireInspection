@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
+using StationTireInspection.JDO;
 
 namespace StationTireInspection.UDT
 {
@@ -10,6 +11,7 @@ namespace StationTireInspection.UDT
         public DatabaseSettingsJDO DatabaseSettings { get; set; } = new DatabaseSettingsJDO();
         public BarcodeReaderSettingsJDO BarcodeReaderSettings { get; set; } = new BarcodeReaderSettingsJDO();
         public MainAppConnectionSettingsJDO MainAppConnectionSettings { get; set; } = new MainAppConnectionSettingsJDO();
+        public PLCStationInterfaceSettingsJDO PLCStationInterfaceSettings { get; set; } = new PLCStationInterfaceSettingsJDO();
         public StationSettingsJDO StationSettings { get; set; } = new StationSettingsJDO();
 
         public string Serialize()

@@ -31,6 +31,9 @@ namespace StationTireInspection.Forms
         {
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.InterfacTCPIPClientDot = new StationTireInspection.UserControls.ClientStatusDot();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.MainAppStatusDot = new StationTireInspection.UserControls.ClientStatusDot();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,8 +57,10 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.clientStatusDot4 = new StationTireInspection.UserControls.ClientStatusDot();
             this.label2 = new System.Windows.Forms.Label();
+            this.clientStatusDot1 = new StationTireInspection.UserControls.ClientStatusDot();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -73,24 +78,66 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 292F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(439, 167);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(436, 210);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tableLayoutPanel10);
             this.panel1.Controls.Add(this.tableLayoutPanel9);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.tableLayoutPanel3);
-            this.panel1.Location = new System.Drawing.Point(76, 23);
+            this.panel1.Location = new System.Drawing.Point(75, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(286, 140);
+            this.panel1.Size = new System.Drawing.Size(286, 172);
             this.panel1.TabIndex = 6;
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel10.Controls.Add(this.InterfacTCPIPClientDot, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(0, 126);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(286, 42);
+            this.tableLayoutPanel10.TabIndex = 7;
+            // 
+            // InterfacTCPIPClientDot
+            // 
+            this.InterfacTCPIPClientDot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InterfacTCPIPClientDot.Client = null;
+            this.InterfacTCPIPClientDot.Location = new System.Drawing.Point(204, 3);
+            this.InterfacTCPIPClientDot.Name = "InterfacTCPIPClientDot";
+            this.InterfacTCPIPClientDot.Size = new System.Drawing.Size(79, 36);
+            this.InterfacTCPIPClientDot.Status = VisualInspection.Utils.Net.ClientStatus.Disconnected;
+            this.InterfacTCPIPClientDot.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(195, 42);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Interface Status:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel9
             // 
@@ -224,7 +271,7 @@ namespace StationTireInspection.Forms
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 169);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 217);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.218115F));
@@ -271,7 +318,9 @@ namespace StationTireInspection.Forms
             // 
             // tbBuffer
             // 
+            this.tbBuffer.BackColor = System.Drawing.Color.Gray;
             this.tbBuffer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbBuffer.Enabled = false;
             this.tbBuffer.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tbBuffer.Location = new System.Drawing.Point(45, 42);
             this.tbBuffer.Multiline = true;
@@ -416,6 +465,18 @@ namespace StationTireInspection.Forms
             this.label2.Text = "Database Status:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // clientStatusDot1
+            // 
+            this.clientStatusDot1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.clientStatusDot1.Client = null;
+            this.clientStatusDot1.Location = new System.Drawing.Point(357, 3);
+            this.clientStatusDot1.Name = "clientStatusDot1";
+            this.clientStatusDot1.Size = new System.Drawing.Size(79, 36);
+            this.clientStatusDot1.Status = VisualInspection.Utils.Net.ClientStatus.Disconnected;
+            this.clientStatusDot1.TabIndex = 2;
+            // 
             // CommDiagnostics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -429,6 +490,8 @@ namespace StationTireInspection.Forms
             this.Text = "Diagnostics";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -456,7 +519,6 @@ namespace StationTireInspection.Forms
         private System.Windows.Forms.Label lblBarcodeBuffer;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TextBox tbBuffer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private UserControls.ClientStatusDot ReaderClientStatusDot;
         private System.Windows.Forms.Label lblReaderStatus;
@@ -472,5 +534,10 @@ namespace StationTireInspection.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private UserControls.ClientStatusDot clientStatusDot4;
         private System.Windows.Forms.Label label2;
+        private UserControls.ClientStatusDot clientStatusDot1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private UserControls.ClientStatusDot InterfacTCPIPClientDot;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbBuffer;
     }
 }

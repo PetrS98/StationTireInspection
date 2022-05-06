@@ -19,12 +19,13 @@ namespace StationTireInspection.Forms
         TCPIPClient ReaderTCPClient;
         TCPIPClient ServerTCPClient;
         DataToServerJDO DataToServer;
+        TCPIPClient InterfacTCPIPClient;
 
         private string BarcodeMemory = "";
 
         private string[] BufferItems = new string[23];
 
-        public CommDiagnostics(MySQLDatabase mySQLDatabase, TCPIPClient readerTCPClient, TCPIPClient serverTCPClient, DataToServerJDO dataToServer)
+        public CommDiagnostics(MySQLDatabase mySQLDatabase, TCPIPClient readerTCPClient, TCPIPClient serverTCPClient, DataToServerJDO dataToServer, TCPIPClient interfacTCPIPClient)
         {
             InitializeComponent();
 
@@ -32,6 +33,7 @@ namespace StationTireInspection.Forms
             ReaderTCPClient = readerTCPClient;
             ServerTCPClient = serverTCPClient;
             DataToServer = dataToServer;
+            InterfacTCPIPClient = interfacTCPIPClient;
 
             Translator.LanguageChanged += Translate;
             ReaderTCPClient.DataChanged += ReaderData_Changed;
@@ -39,6 +41,7 @@ namespace StationTireInspection.Forms
             DatabaseStatusDot.Client = MySQLDatabase;
             ReaderClientStatusDot.Client = ReaderTCPClient;
             MainAppStatusDot.Client = ServerTCPClient;
+            InterfacTCPIPClientDot.Client = InterfacTCPIPClient;
         }
 
         private void ReaderData_Changed(object sender, byte[] e)
