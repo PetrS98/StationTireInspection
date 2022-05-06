@@ -296,7 +296,7 @@ namespace StationTireInspection.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (NonOperation == 0) return;
+            //if (NonOperation == 0) return;
 
             SetStopNonOPInfosAndSendToDB();
 

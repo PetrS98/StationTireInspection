@@ -129,6 +129,16 @@ namespace StationTireInspection
             pages.Add(btnMainAppSettings, mainAppConnectionSettings);
             pages.Add(btnAboutApp, aboutApp);
 
+            DataToServer.StationInformation.StationName = Settings.StationSettings.StationName;
+            DataToServer.StationInformation.StationID = Settings.StationSettings.StationID;
+            DataToServer.NonOperation = 0;
+            DataToServer.UserInformation.Status = LoginResult.NoLogged;
+
+            mySQLDatabase.ExceptionChanged += MySqlExceptionChanged_ShowPopUp;
+            readerTCPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
+            serverTCPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
+            interfacTCPIPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
+
             mySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
             //mySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
 
@@ -149,15 +159,6 @@ namespace StationTireInspection
             interfacTCPIPClient.Connect_Async();
 
             //interfacTCPIPClient.Connect();
-
-            DataToServer.StationInformation.StationName = Settings.StationSettings.StationName;
-            DataToServer.StationInformation.StationID = Settings.StationSettings.StationID;
-            DataToServer.NonOperation = 0;
-            DataToServer.UserInformation.Status = LoginResult.NoLogged;
-
-            mySQLDatabase.ExceptionChanged += MySqlExceptionChanged_ShowPopUp;
-            readerTCPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
-            serverTCPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
         }
 
         private void TCPClientExceptionChanged_ShowPopUp(object sender, Exception e)
