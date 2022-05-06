@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using StationTireInspection.JDO;
+using StationTireInspection.JDO.SettingsLogin;
 
 namespace StationTireInspection.UDT
 {
@@ -13,6 +14,7 @@ namespace StationTireInspection.UDT
         public MainAppConnectionSettingsJDO MainAppConnectionSettings { get; set; } = new MainAppConnectionSettingsJDO();
         public PLCStationInterfaceSettingsJDO PLCStationInterfaceSettings { get; set; } = new PLCStationInterfaceSettingsJDO();
         public StationSettingsJDO StationSettings { get; set; } = new StationSettingsJDO();
+        public SettingsLoginJDO SettingsLogin { get; set; } = new SettingsLoginJDO();
 
         public string Serialize()
         {
