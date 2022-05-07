@@ -35,6 +35,7 @@ namespace StationTireInspection.Forms
             LoginBox = loginBox;
 
             SetJSONDataToContols();
+            SetControlEnables(true);
 
             MySQLDatabase.StatusChanged += DBStatusChange;
             Translator.LanguageChanged += Translate;
@@ -210,6 +211,12 @@ namespace StationTireInspection.Forms
             tbNonOPsDataTableName.Text = Settings.DatabaseSettings.NonOPsDataTableName;
             tbDatabaseUserName.Text = Settings.DatabaseSettings.DatabaseUserName;
             tbDatabasePassword.Text = Settings.DatabaseSettings.DatabasePassword;
+        }
+
+        private void SetControlEnables(bool Enable)
+        {
+            btnConnect.Enabled = Enable;
+            btnDisconnect.Enabled = !Enable;
         }
     }
 }

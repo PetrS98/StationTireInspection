@@ -132,6 +132,7 @@ namespace StationTireInspection
             // 
             // pbLanguage
             // 
+            this.pbLanguage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbLanguage.Image = global::StationTireInspection.Properties.Resources.cz;
             this.pbLanguage.Location = new System.Drawing.Point(33, 17);
             this.pbLanguage.Name = "pbLanguage";
@@ -292,6 +293,7 @@ namespace StationTireInspection
             // 
             // pbLoged
             // 
+            this.pbLoged.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbLoged.Image = global::StationTireInspection.Properties.Resources.login;
             this.pbLoged.Location = new System.Drawing.Point(162, 22);
             this.pbLoged.Name = "pbLoged";

@@ -35,6 +35,7 @@ namespace StationTireInspection.Forms.Settings
             LoginBox = loginBox;
 
             SetInitValue();
+            SetControlEnables(true);
 
             Translator.LanguageChanged += Translate;
             ServerTCPClient.StatusChanged += Status_Changed;
@@ -148,6 +149,11 @@ namespace StationTireInspection.Forms.Settings
         private void MainAppConnectionSettings_VisibleChanged(object sender, EventArgs e)
         {
             SetInitValue();
+        }
+        private void SetControlEnables(bool Enable)
+        {
+            btnConnect.Enabled = Enable;
+            btnDisconnect.Enabled = !Enable;
         }
     }
 }

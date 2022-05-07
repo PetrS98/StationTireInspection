@@ -35,6 +35,7 @@ namespace StationTireInspection.Forms
             LoginBox = loginBox;
 
             SetInitValue();
+            SetControlEnables(true);
 
             Translator.LanguageChanged += Translate;
             ReaderTCPClient.StatusChanged += Status_Changed;
@@ -148,6 +149,12 @@ namespace StationTireInspection.Forms
         private void BarcodeReaderSettings_VisibleChanged(object sender, EventArgs e)
         {
             SetInitValue();
+        }
+
+        private void SetControlEnables(bool Enable)
+        {
+            btnConnect.Enabled = Enable;
+            btnDisconnect.Enabled = !Enable;
         }
     }
 }

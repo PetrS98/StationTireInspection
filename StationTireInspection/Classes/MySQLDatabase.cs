@@ -35,6 +35,8 @@ namespace StationTireInspection.Classes
         {
             _timerStatus.Interval = 100;
             _timerStatus.Elapsed += CheckStatus;
+
+            _timerStatus.Start();
         }
 
         async public void ConnectToDB_Async(string IpAddress, string UserName, string Password)
@@ -48,7 +50,6 @@ namespace StationTireInspection.Classes
             {
                 mySqlConnection = new MySqlConnection("server=" + IpAddress + ";" + "uid=" + UserName + ";" + "pwd=" + Password + ";" + "database=db_visual_inspection");
                 mySqlConnection.Open();
-                _timerStatus.Start();
                 return true;
             }
             catch(Exception ex)
