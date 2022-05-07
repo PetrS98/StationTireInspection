@@ -7,6 +7,7 @@ using StationTireInspection.Classes;
 using StationTireInspection.Forms;
 using StationTireInspection.Forms.MessageBoxes;
 using StationTireInspection.Forms.Settings;
+using StationTireInspection.Forms.SettingsLogin;
 using StationTireInspection.JDO.DataToServer;
 using StationTireInspection.UDT;
 
@@ -25,6 +26,7 @@ namespace StationTireInspection
 
         private MySQLDatabase mySQLDatabase = new MySQLDatabase();
 
+        private LoginBox loginBox;
         private TCPIPClient readerTCPClient;
         private TCPIPClient serverTCPClient;
         private TCPIPClient interfacTCPIPClient;
@@ -38,6 +40,8 @@ namespace StationTireInspection
         private MainAppConnectionSettings mainAppConnectionSettings;
         private ServerClient serverClient;
         private PLCStationInterfaceSettings pLCStationInterfaceSettings;
+
+        private bool LoginIcon;
 
         private bool mouseDown;
         private Point lastLocation;
@@ -86,20 +90,20 @@ namespace StationTireInspection
 
             Translator.LanguageChanged += Translate;
 
-            
+            loginBox = new LoginBox(Settings.SettingsLogin);
             readerTCPClient = new TCPIPClient();
             serverTCPClient = new TCPIPClient();
             interfacTCPIPClient = new TCPIPClient();
             changePassword = new ChangePassword(mySQLDatabase, Settings);
             login = new Login(mySQLDatabase, Settings, changePassword, DataToServer);
             serverClient = new ServerClient(readerTCPClient, serverTCPClient, DataToServer, login);
-            barcodeReaderSettings = new BarcodeReaderSettings(Settings, readerTCPClient);
+            barcodeReaderSettings = new BarcodeReaderSettings(Settings, readerTCPClient, loginBox);
             diagnostics = new CommDiagnostics(mySQLDatabase, readerTCPClient, serverTCPClient, DataToServer, interfacTCPIPClient);
-            databaseSettings = new DatabaseSettings(Settings, mySQLDatabase);
+            databaseSettings = new DatabaseSettings(Settings, mySQLDatabase, loginBox);
             aboutApp = new AboutApp();
-            pLCStationInterfaceSettings = new PLCStationInterfaceSettings(Settings, interfacTCPIPClient);
-            stationSettings = new StationSettings(Settings, DataToServer);
-            mainAppConnectionSettings = new MainAppConnectionSettings(Settings, serverTCPClient);
+            pLCStationInterfaceSettings = new PLCStationInterfaceSettings(Settings, interfacTCPIPClient, loginBox);
+            stationSettings = new StationSettings(Settings, DataToServer, loginBox);
+            mainAppConnectionSettings = new MainAppConnectionSettings(Settings, serverTCPClient, loginBox);
 
             login.LoginResultChanged += LoginChanged;
 
@@ -114,7 +118,9 @@ namespace StationTireInspection
             AddPage(aboutApp);
 
             Translator.Language = Language.ENG;
-            LoginManager.LogedIn = true;
+
+            loginBox.LogedChanged += Login_Changed;
+            LoginIcon = true;
 
             ActiveButton = btnAboutApp;
             ActivePage = aboutApp;
@@ -249,17 +255,27 @@ namespace StationTireInspection
 
         private void pbLoged_Click(object sender, EventArgs e)
         {
-            if (LoginManager.LogedIn == true)
+            if(loginBox.LogedIn == false)
+            {
+                loginBox.ShowLoginDialog();
+            }
+            else
+            {
+                loginBox.LogedIn = false;
+            }
+        }
+
+        private void Login_Changed(object sender, bool e)
+        {
+            if (e == true)
             {
                 pbLoged.Image.Dispose();
                 pbLoged.Image = Properties.Resources.logout;
-                LoginManager.LogedIn = false;
             }
             else
             {
                 pbLoged.Image.Dispose();
                 pbLoged.Image = Properties.Resources.login;
-                LoginManager.LogedIn = true;
             }
         }
 

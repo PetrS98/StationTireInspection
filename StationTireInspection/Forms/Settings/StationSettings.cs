@@ -1,5 +1,6 @@
 ﻿using StationTireInspection.Classes;
 using StationTireInspection.Forms.MessageBoxes;
+using StationTireInspection.Forms.SettingsLogin;
 using StationTireInspection.JDO.DataToServer;
 using StationTireInspection.UDT;
 using System;
@@ -16,6 +17,7 @@ namespace StationTireInspection.Forms
     {
         private SettingsJDO Settings;
         private DataToServerJDO DataToServer;
+        private LoginBox LoginBox;
 
         private string ErrorMessageBoxTitle = "";
         private string Error = "";
@@ -23,12 +25,13 @@ namespace StationTireInspection.Forms
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public StationSettings(SettingsJDO settings, DataToServerJDO dataToServer)
+        public StationSettings(SettingsJDO settings, DataToServerJDO dataToServer, LoginBox loginBox)
         {
             InitializeComponent();
 
             Settings = settings;
             DataToServer = dataToServer;
+            LoginBox = loginBox;
 
             SetInitValue();
 
@@ -72,7 +75,9 @@ namespace StationTireInspection.Forms
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            if(tbName.Text != null && tbName.Text != "")
+            if (LoginBox.CheckLogin() == false) return;
+
+            if (tbName.Text != null && tbName.Text != "")
             {
                 Settings.StationSettings.StationName = tbName.Text;
                 DataToServer.StationInformation.StationName = tbName.Text;

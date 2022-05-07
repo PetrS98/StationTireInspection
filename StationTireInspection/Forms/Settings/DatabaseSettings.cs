@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using VisualInspection.Utils.Net;
 using VisualInspection.Utils;
+using StationTireInspection.Forms.SettingsLogin;
 
 namespace StationTireInspection.Forms
 {
@@ -17,6 +18,7 @@ namespace StationTireInspection.Forms
     {
         private SettingsJDO Settings;
         MySQLDatabase MySQLDatabase;
+        LoginBox LoginBox;
 
         private string ErrorMessageBoxTitle = "";
         private string[] Errors = new string[7];
@@ -24,13 +26,13 @@ namespace StationTireInspection.Forms
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public DatabaseSettings(SettingsJDO settings, MySQLDatabase mySQLDatabase)
+        public DatabaseSettings(SettingsJDO settings, MySQLDatabase mySQLDatabase, LoginBox loginBox)
         {
             InitializeComponent();
 
             MySQLDatabase = mySQLDatabase;
-
             Settings = settings;
+            LoginBox = loginBox;
 
             SetJSONDataToContols();
 
@@ -112,6 +114,8 @@ namespace StationTireInspection.Forms
 
         private void btnApply_Click(object sender, EventArgs e)
         {
+            if (LoginBox.CheckLogin() == false) return;
+
             if (ipAddressBox.IPAddressValid)
             {
                 Settings.DatabaseSettings.IPAddress = ipAddressBox.IPAddress;
@@ -177,6 +181,8 @@ namespace StationTireInspection.Forms
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            if (LoginBox.CheckLogin() == false) return;
+
             if (MySQLDatabase.Status != ClientStatus.Disconnected) return;
             MySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
 
@@ -185,6 +191,8 @@ namespace StationTireInspection.Forms
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
+            if (LoginBox.CheckLogin() == false) return;
+
             if (MySQLDatabase.Equals(ClientStatus.Connected)) return;
             MySQLDatabase.DisconnectFromDB();
         }

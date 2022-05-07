@@ -1,5 +1,6 @@
 ﻿using StationTireInspection.Classes;
 using StationTireInspection.Forms.MessageBoxes;
+using StationTireInspection.Forms.SettingsLogin;
 using StationTireInspection.UDT;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace StationTireInspection.Forms.Settings
     public partial class PLCStationInterfaceSettings : Form
     {
         private SettingsJDO Settings;
-        TCPIPClient InterfaceTCPIPClient;
+        private TCPIPClient InterfaceTCPIPClient;
+        private LoginBox LoginBox;
 
         private string ErrorMessageBoxTitle = "";
         private string[] Errors = new string[2];
@@ -24,12 +26,13 @@ namespace StationTireInspection.Forms.Settings
         private string MessageMessageBoxTitle = "";
         private string Message = "";
 
-        public PLCStationInterfaceSettings(SettingsJDO settings, TCPIPClient interfaceTCPIPClient)
+        public PLCStationInterfaceSettings(SettingsJDO settings, TCPIPClient interfaceTCPIPClient, LoginBox loginBox)
         {
             InitializeComponent();
 
             Settings = settings;
             InterfaceTCPIPClient = interfaceTCPIPClient;
+            LoginBox = loginBox;
 
             SetInitValue();
 
@@ -93,6 +96,8 @@ namespace StationTireInspection.Forms.Settings
 
         private void btnApply_Click(object sender, EventArgs e)
         {
+            if (LoginBox.CheckLogin() == false) return;
+
             if (ipAddressBox.IPAddressValid)
             {
                 Settings.PLCStationInterfaceSettings.IPAddress = ipAddressBox.IPAddress;
@@ -118,6 +123,8 @@ namespace StationTireInspection.Forms.Settings
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            if (LoginBox.CheckLogin() == false) return;
+
             InterfaceTCPIPClient.IPAddress = Settings.PLCStationInterfaceSettings.IPAddress;
             InterfaceTCPIPClient.Port = Settings.PLCStationInterfaceSettings.Port;
             InterfaceTCPIPClient.Connect_Async();
@@ -127,6 +134,8 @@ namespace StationTireInspection.Forms.Settings
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
+            if (LoginBox.CheckLogin() == false) return;
+
             InterfaceTCPIPClient.Disconnect(true);
         }
 
