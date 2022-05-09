@@ -13,9 +13,19 @@ namespace StationTireInspection.Classes
 {
     public class MySQLDatabase : IHasClientStatus
     {
+        private readonly bool RECONNECT_ENABLE = true;
+
         private MySqlConnection mySqlConnection;
 
         private Timer _timerStatus = new Timer();
+        System.Timers.Timer ReconnectingTimer = new System.Timers.Timer();
+
+        private bool Reconnecting = false;
+
+        public string DatabaseName { get; set; }
+        public string IPAddress { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
 
         private ClientStatus status = ClientStatus.Disconnected;
         public ClientStatus Status
@@ -35,37 +45,60 @@ namespace StationTireInspection.Classes
         {
             _timerStatus.Interval = 100;
             _timerStatus.Elapsed += CheckStatus;
-
             _timerStatus.Start();
+
+            ReconnectingTimer.Interval = 5000;
+            ReconnectingTimer.Elapsed += TryReconnect;
+            ReconnectingTimer.Start();
         }
 
-        async public void ConnectToDB_Async(string IpAddress, string UserName, string Password)
+         private void TryReconnect(object sender, EventArgs e)
         {
-            await Task.Run(() => ConnectToDB(IpAddress, UserName, Password));
+            if (Status == ClientStatus.Connected || Status == ClientStatus.Connecting) return;
+
+            Status = ClientStatus.Connecting;
+            Reconnecting = true;
+            DisconnectFromDB(false);
+            ConnectToDB_Async();
+
+            //Connect();
         }
 
-        public bool ConnectToDB(string IpAddress, string UserName, string Password)
+        async public void ConnectToDB_Async()
         {
+            await Task.Run(() => ConnectToDB());
+        }
+
+        public bool ConnectToDB()
+        {
+            if (RECONNECT_ENABLE == true)
+            {
+                ReconnectingTimer.Start();
+            }
+
             try
             {
-                mySqlConnection = new MySqlConnection("server=" + IpAddress + ";" + "uid=" + UserName + ";" + "pwd=" + Password + ";" + "database=db_visual_inspection");
+                mySqlConnection = new MySqlConnection("server=" + IPAddress + ";" + "uid=" + UserName + ";" + "pwd=" + Password + ";" + "database=" + DatabaseName);
                 mySqlConnection.Open();
                 return true;
             }
             catch(Exception ex)
             {
                 //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
-                ExceptionChanged(this, ex);
+                if (Reconnecting == false) ExceptionChanged(this, ex);
+
                 return false;
             }
         }
 
-        public void DisconnectFromDB()
+        public void DisconnectFromDB(bool DisableReconnect)
         {
-            _timerStatus.Stop();
+            //_timerStatus.Stop();
             Status = ClientStatus.Disconnected;
             mySqlConnection?.Close();
             mySqlConnection = null;
+
+            if(DisableReconnect) ReconnectingTimer.Stop();
         }
 
         public UserInformations ReadUserInformation(string TableName, int PersonalID)

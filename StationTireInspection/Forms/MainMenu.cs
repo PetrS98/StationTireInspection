@@ -41,8 +41,6 @@ namespace StationTireInspection
         private ServerClient serverClient;
         private PLCStationInterfaceSettings pLCStationInterfaceSettings;
 
-        private bool LoginIcon;
-
         private bool mouseDown;
         private Point lastLocation;
 
@@ -120,7 +118,6 @@ namespace StationTireInspection
             Translator.Language = Language.ENG;
 
             loginBox.LogedChanged += Login_Changed;
-            LoginIcon = true;
 
             ActiveButton = btnAboutApp;
             ActivePage = aboutApp;
@@ -145,26 +142,27 @@ namespace StationTireInspection
             serverTCPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
             interfacTCPIPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
 
-            mySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
-            //mySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
+            mySQLDatabase.DatabaseName = Settings.DatabaseSettings.DatabaseName;
+            mySQLDatabase.IPAddress = Settings.DatabaseSettings.IPAddress;
+            mySQLDatabase.UserName = Settings.DatabaseSettings.DatabaseUserName;
+            mySQLDatabase.Password = Settings.DatabaseSettings.DatabasePassword;
+            mySQLDatabase.ConnectToDB_Async();
 
             readerTCPClient.IPAddress = Settings.BarcodeReaderSettings.IPAddress;
             readerTCPClient.Port = Settings.BarcodeReaderSettings.Port;
             readerTCPClient.Connect_Async();
 
-            //readerTCPClient.Connect();
-
             serverTCPClient.IPAddress = Settings.MainAppConnectionSettings.IPAddress;
             serverTCPClient.Port = Settings.MainAppConnectionSettings.Port;
             serverTCPClient.Connect_Async();
-
-            //serverTCPClient.Connect();
 
             interfacTCPIPClient.IPAddress = Settings.PLCStationInterfaceSettings.IPAddress;
             interfacTCPIPClient.Port = Settings.PLCStationInterfaceSettings.Port;
             interfacTCPIPClient.Connect_Async();
 
-            //interfacTCPIPClient.Connect();
+
+            // ODSTRANIT PRO DEAKTIVACI AUTOMATICKÉHO PŘIHLAŠOVÁNÍ
+            loginBox.LogedIn = true;
         }
 
         private void TCPClientExceptionChanged_ShowPopUp(object sender, Exception e)

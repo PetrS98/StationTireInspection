@@ -178,6 +178,11 @@ namespace StationTireInspection.Forms
             }
 
             CustomMessageBox.ShowPopup(MessageMessageBoxTitle, Message);
+
+            MySQLDatabase.DatabaseName = Settings.DatabaseSettings.DatabaseName;
+            MySQLDatabase.IPAddress = Settings.DatabaseSettings.IPAddress;
+            MySQLDatabase.UserName = Settings.DatabaseSettings.DatabaseUserName;
+            MySQLDatabase.Password = Settings.DatabaseSettings.DatabasePassword;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -185,7 +190,12 @@ namespace StationTireInspection.Forms
             if (LoginBox.CheckLogin() == false) return;
 
             if (MySQLDatabase.Status != ClientStatus.Disconnected) return;
-            MySQLDatabase.ConnectToDB_Async(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
+
+            MySQLDatabase.DatabaseName = Settings.DatabaseSettings.DatabaseName;
+            MySQLDatabase.IPAddress = Settings.DatabaseSettings.IPAddress;
+            MySQLDatabase.UserName = Settings.DatabaseSettings.DatabaseUserName;
+            MySQLDatabase.Password = Settings.DatabaseSettings.DatabasePassword;
+            MySQLDatabase.ConnectToDB_Async();
 
             //MySQLDatabase.ConnectToDB(Settings.DatabaseSettings.IPAddress, Settings.DatabaseSettings.DatabaseUserName, Settings.DatabaseSettings.DatabasePassword);
         }
@@ -195,7 +205,7 @@ namespace StationTireInspection.Forms
             if (LoginBox.CheckLogin() == false) return;
 
             if (MySQLDatabase.Equals(ClientStatus.Connected)) return;
-            MySQLDatabase.DisconnectFromDB();
+            MySQLDatabase.DisconnectFromDB(true);
         }
 
         private void DatabaseSettings_VisibleChanged(object sender, EventArgs e)

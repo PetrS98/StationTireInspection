@@ -58,6 +58,12 @@ namespace StationTireInspection.Classes
 
             CheckConnection.Interval = 300;
             CheckConnection.Elapsed += CheckComm;
+
+
+            if (RECONNECT_ENABLE == true)
+            {
+                ReconnectingTimer.Start();
+            }
         }
 
         private void CheckComm(object sender, EventArgs e)
@@ -70,6 +76,7 @@ namespace StationTireInspection.Classes
         {
             if (Client.IsConnected == true) return;
 
+            Status = ClientStatus.Connecting;
             Reconnecting = true;
             Disconnect(false);
             Connect_Async();
