@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
 using MySqlConnector;
 using StationTireInspection.Forms.MessageBoxes;
 using StationTireInspection.UDT;
@@ -17,10 +16,11 @@ namespace StationTireInspection.Classes
 
         private MySqlConnection mySqlConnection;
 
-        private Timer _timerStatus = new Timer();
-        System.Timers.Timer ReconnectingTimer = new System.Timers.Timer();
+        private System.Timers.Timer _timerStatus = new System.Timers.Timer();
+        private System.Timers.Timer ReconnectingTimer = new System.Timers.Timer();
 
         private bool Reconnecting = false;
+        private Exception ExceptionMemory = new Exception();
 
         public string DatabaseName { get; set; }
         public string IPAddress { get; set; }
@@ -60,8 +60,6 @@ namespace StationTireInspection.Classes
             Reconnecting = true;
             DisconnectFromDB(false);
             ConnectToDB_Async();
-
-            //Connect();
         }
 
         async public void ConnectToDB_Async()
@@ -84,16 +82,15 @@ namespace StationTireInspection.Classes
             }
             catch(Exception ex)
             {
-                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
-                if (Reconnecting == false) ExceptionChanged(this, ex);
-
+                if (ex.Message != ExceptionMemory.Message) ExceptionChanged(this, ex);
+                ExceptionMemory = ex;
+                
                 return false;
             }
         }
 
         public void DisconnectFromDB(bool DisableReconnect)
         {
-            //_timerStatus.Stop();
             Status = ClientStatus.Disconnected;
             mySqlConnection?.Close();
             mySqlConnection = null;
@@ -127,7 +124,6 @@ namespace StationTireInspection.Classes
             }
             catch(Exception ex)
             {
-                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
                 ExceptionChanged(this, ex);
                 return null;
             }
@@ -152,7 +148,6 @@ namespace StationTireInspection.Classes
             }
             catch (Exception ex)
             {
-                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
                 ExceptionChanged(this, ex);
                 return null;
             }
@@ -175,7 +170,6 @@ namespace StationTireInspection.Classes
             }
             catch (Exception ex)
             {
-                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
                 ExceptionChanged(this, ex);
                 return false;
             }
@@ -205,7 +199,6 @@ namespace StationTireInspection.Classes
             }
             catch (Exception ex)
             {
-                //CustomMessageBox.ShowPopup("MySQL Error", ex.Message);
                 ExceptionChanged(this, ex);
                 return false;
             }
@@ -213,7 +206,7 @@ namespace StationTireInspection.Classes
             return true;
         }
 
-        private void CheckStatus(object sender, ElapsedEventArgs e)
+        private void CheckStatus(object sender, EventArgs e)
         {
             if (mySqlConnection is null) return;
             var state = mySqlConnection.State;

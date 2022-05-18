@@ -204,7 +204,7 @@ namespace StationTireInspection.Forms
         {
             if (LoginBox.CheckLogin() == false) return;
 
-            if (MySQLDatabase.Equals(ClientStatus.Connected)) return;
+            //if (MySQLDatabase.Equals(ClientStatus.Connected)) return;
             MySQLDatabase.DisconnectFromDB(true);
         }
 

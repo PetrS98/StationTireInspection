@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using StationTireInspection.Classes;
 using StationTireInspection.Forms;
@@ -141,6 +142,8 @@ namespace StationTireInspection
             readerTCPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
             serverTCPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
             interfacTCPIPClient.ExceptionChanged += TCPClientExceptionChanged_ShowPopUp;
+
+            //Thread.Sleep(1000);
 
             mySQLDatabase.DatabaseName = Settings.DatabaseSettings.DatabaseName;
             mySQLDatabase.IPAddress = Settings.DatabaseSettings.IPAddress;

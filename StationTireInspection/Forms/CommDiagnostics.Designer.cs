@@ -318,13 +318,13 @@ namespace StationTireInspection.Forms
             // 
             // tbBuffer
             // 
-            this.tbBuffer.BackColor = System.Drawing.Color.Gray;
+            this.tbBuffer.BackColor = System.Drawing.Color.Gainsboro;
             this.tbBuffer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbBuffer.Enabled = false;
             this.tbBuffer.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tbBuffer.Location = new System.Drawing.Point(45, 42);
             this.tbBuffer.Multiline = true;
             this.tbBuffer.Name = "tbBuffer";
+            this.tbBuffer.ReadOnly = true;
             this.tbBuffer.Size = new System.Drawing.Size(342, 428);
             this.tbBuffer.TabIndex = 0;
             this.tbBuffer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
